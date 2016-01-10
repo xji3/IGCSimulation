@@ -242,7 +242,8 @@ class OneBranchIGCSimulator:
         while(cummulate_time < blen):
             # Now sample exponential distributed waiting time for next event
             # point mutation or IGC event
-            self.add_div([str(cummulate_time), str(1.0 - self.compare_similarity()), str(self.point_mut_count), str(self.IGC_total_count), str(self.IGC_failure_count)])
+            ## not recording divergence this time
+            ##self.add_div([str(cummulate_time), str(1.0 - self.compare_similarity()), str(self.point_mut_count), str(self.IGC_total_count), str(self.IGC_failure_count)])
             total_rate = self.mut_total_rate + 2 * self.IGC_total_rate
             if total_rate == 0.0:
                 break
@@ -265,7 +266,8 @@ class OneBranchIGCSimulator:
                     # copy from paralog 1 to paralog 0
                     self.get_one_IGC_event(template_paralog = 1, target_paralog = 0)
 
-        self.add_final_seq()
+        # intermidiate step, don't need to add final sequence
+        # self.add_final_seq()
 
     def add_final_seq(self):
         with open(self.log_file, 'a') as f:
