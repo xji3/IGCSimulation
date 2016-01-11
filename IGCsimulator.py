@@ -8,9 +8,10 @@ from copy import deepcopy
 
 class OneBranchIGCSimulator:
     def __init__(self, blen, num_exon, num_intron,
-                 x_exon, x_IGC, x_intron, log_file, div_file, 
+                 x_exon, x_IGC, x_intron, log_file, div_file,
+                 initial_seq = None, 
                  intron_model = 'HKY', exon_model = 'MG94',
-                 has_intron = True, num_paralog = 2, initial_seq = None):
+                 has_intron = True, num_paralog = 2):
         
         
         self.blen         = blen          # branch length
@@ -28,7 +29,7 @@ class OneBranchIGCSimulator:
         self.exon_model   = exon_model    # exonic region substitution model
         self.num_paralog  = num_paralog   # number of paralogs in the simulation, currently 2
         self.initial_seq  = initial_seq   # initial sequences of paralogs, will simulate if not given
-        self.current_seq  = None
+        self.current_seq  = initial_seq
         # list of [paralog site state list]
         # paralog site state list = [[exon 1], [intron], [exon 2]]
 
@@ -76,20 +77,23 @@ class OneBranchIGCSimulator:
             self.exon_distn = distn_codon
             self.exon_mut_Q = self.get_MG94()
 
-        if self.intron_model == 'HKY':
-            # get stationary nucleotide distribution of nucleotide model of introni region
-            pi_nt = self.unpack_x_intron()[0]
-            distn_nt = [ pi_nt['ACGT'.index(nt)] for nt in 'ACGT' ]
-            distn_nt = np.array(distn_nt) / sum(distn_nt)
-            self.intron_distn = distn_nt
-            self.intron_mut_Q = self.get_HKY()
+##        if self.intron_model == 'HKY':
+##            # get stationary nucleotide distribution of nucleotide model of introni region
+##            pi_nt = self.unpack_x_intron()[0]
+##            distn_nt = [ pi_nt['ACGT'.index(nt)] for nt in 'ACGT' ]
+##            distn_nt = np.array(distn_nt) / sum(distn_nt)
+##            self.intron_distn = distn_nt
+##            self.intron_mut_Q = self.get_HKY()
 
-        if self.initial_seq == None:
-            self.initial_seq = self.sim_initial_seq()
-        else:
-            assert(len(self.initial_seq) == self.num_paralog)
-        self.current_seq = deepcopy(self.initial_seq)
+##        if self.initial_seq == None:
+##            self.initial_seq = self.sim_initial_seq()
+##        else:
+##            assert(len(self.initial_seq) == self.num_paralog)
+##        self.current_seq = deepcopy(self.initial_seq)
         self.get_IGC_rate()
+        print self.initial_seq
+        self.current_seq = self.convert_seq_to_list(self.initial_seq)
+        print self.current_seq
         self.get_mutation_rate()
         with open(self.log_file, 'w+') as f:
             f.write('Initial seq: \n' + '\n'.join(self.convert_list_to_seq()) + '\n')
@@ -185,16 +189,12 @@ class OneBranchIGCSimulator:
     def get_mutation_rate(self):
         poisson_rate_sum = 0.0
         exon_diag_rates = self.exon_mut_Q.sum(axis = 1)
-        intron_diag_rates = self.intron_mut_Q.sum(axis = 1)
+#        intron_diag_rates = self.intron_mut_Q.sum(axis = 1)
 
         seq_rate_list = []
         for i in range(self.num_paralog):
             seq_rate = []
-            exon_rate = [exon_diag_rates[self.codon_to_state[self.current_seq[i][0][j]]] for j in range(self.num_exon)]
-            seq_rate.extend(exon_rate)
-            intron_rate = [intron_diag_rates[self.nt_to_state[self.current_seq[i][1][j]]] for j in range(self.num_intron)]
-            seq_rate.extend(intron_rate)
-            exon_rate = [exon_diag_rates[self.codon_to_state[self.current_seq[i][2][j]]] for j in range(self.num_exon)]
+            exon_rate = [exon_diag_rates[self.codon_to_state[self.current_seq[i][j]]] for j in range(self.num_exon)]
             seq_rate.extend(exon_rate)
             seq_rate_list.extend(seq_rate)
 
@@ -278,6 +278,7 @@ class OneBranchIGCSimulator:
 
     def get_one_point_mutation(self):
         mut_pos = draw_from_distribution(self.mut_poisson_rate / sum(self.mut_poisson_rate), 1, range(len(self.mut_poisson_rate)))
+        #print len(self.mut_poisson_rate)
         # mut_pos is where point mutation happens
         mut_paralog = mut_pos / (2 * self.num_exon + self.num_intron)
         
@@ -354,10 +355,9 @@ class OneBranchIGCSimulator:
         return (deepcopy(paralog_seq_list))
         
     def convert_seq_to_list(self, seq):
-        exon_1 = [seq[(3*event):(3*event + 3)] for event in range(self.num_exon)]
-        intron = [seq[event] for event in range(self.num_exon*3, self.num_exon*3 + self.num_intron)]
-        exon_2 = [seq[(3*event + 3*self.num_exon + self.num_intron):(3*event + 3 + 3*self.num_exon + self.num_intron)] for event in range(self.num_exon)]
-        return([exon_1, intron, exon_2])        
+        exon_1 = [seq[0][(3*event):(3*event + 3)] for event in range(self.num_exon)]
+        exon_2 = [seq[1][(3*event):(3*event + 3)] for event in range(self.num_exon)]
+        return([exon_1, exon_2])        
         
     def compare_similarity(self):
         assert(self.num_paralog == 2)
