@@ -41,6 +41,9 @@ class OneBranchIGCSimulator:
         self.point_mut_count   = 0        # total number of point mutation in the simulation
         self.IGC_total_count   = 0        # total number of IGC events in the simulation
         self.IGC_failure_count = 0        # total number of failed IGC events in the simulation
+        self.IGC_contribution_count = 0   # total number of sites experiencing IGC
+        self.IGC_tract_length  = 0        # used to track each IGC event tract length
+        self.IGC_change_sites  = 0        # used to track changes due to IGC event
 
         self.exon_mut_Q   = None
         self.intron_mut_Q = None
@@ -91,9 +94,7 @@ class OneBranchIGCSimulator:
 ##            assert(len(self.initial_seq) == self.num_paralog)
 ##        self.current_seq = deepcopy(self.initial_seq)
         self.get_IGC_rate()
-        print self.initial_seq
         self.current_seq = self.convert_seq_to_list(self.initial_seq)
-        print self.current_seq
         self.get_mutation_rate()
         with open(self.log_file, 'w+') as f:
             f.write('Initial seq: \n' + '\n'.join(self.convert_list_to_seq()) + '\n')
@@ -103,7 +104,7 @@ class OneBranchIGCSimulator:
             f.write('x_IGC: ' + ', '.join([str(parameter) for parameter in self.x_IGC]) + '\n')
 
         with open(self.div_file, 'w+') as f:
-            f.write('# time \t divergence \t # of mutations \t # IGC chances \t # IGC failures \n')
+            f.write('# time \t divergence \t # of mutations \t # IGC chances \t IGC length \t # IGC failures \t Changes due to IGC  \t % change due to IGC \n')
 
         
     def sim_initial_seq(self):
@@ -187,6 +188,7 @@ class OneBranchIGCSimulator:
         return Qbasic
 
     def get_mutation_rate(self):
+        #print self.current_seq
         poisson_rate_sum = 0.0
         exon_diag_rates = self.exon_mut_Q.sum(axis = 1)
 #        intron_diag_rates = self.intron_mut_Q.sum(axis = 1)
@@ -206,7 +208,7 @@ class OneBranchIGCSimulator:
         # row number is the starting position, column number is the ending position
         # This matrix only need to prepare once and then stay constant
         if self.exon_model == 'MG94':
-            S = 2 * 3 * self.num_exon + self.num_intron
+            S = 3 * self.num_exon + self.num_intron
         J = np.zeros((S, S))  # copying my formula part from Alex's script
         l = np.arange(S+1, dtype=float)
         p = (self.IGC_geo_q) * (1 - self.IGC_geo_q)**l  # geometric distribution
@@ -238,12 +240,21 @@ class OneBranchIGCSimulator:
         self.point_mut_count   = 0
         self.IGC_total_count   = 0
         self.IGC_failure_count = 0
+        self.IGC_contribution_count = 0
 
         while(cummulate_time < blen):
             # Now sample exponential distributed waiting time for next event
             # point mutation or IGC event
-            ## not recording divergence this time
-            ##self.add_div([str(cummulate_time), str(1.0 - self.compare_similarity()), str(self.point_mut_count), str(self.IGC_total_count), str(self.IGC_failure_count)])
+            ## not only recording divergence this time
+            
+            div_info = [str(cummulate_time), str(1.0 - self.compare_similarity()), str(self.point_mut_count),
+                        str(self.IGC_total_count), str(self.IGC_tract_length), str(self.IGC_failure_count), str(self.IGC_change_sites)]
+            if self.point_mut_count + self.IGC_change_sites == 0:
+                div_info.append(str(0.0))
+            else:
+                div_info.append(str((self.IGC_change_sites + 0.0) / (self.IGC_change_sites + self.point_mut_count + 0.0)))
+                
+            self.add_div(div_info)
             total_rate = self.mut_total_rate + 2 * self.IGC_total_rate
             if total_rate == 0.0:
                 break
@@ -280,33 +291,16 @@ class OneBranchIGCSimulator:
         mut_pos = draw_from_distribution(self.mut_poisson_rate / sum(self.mut_poisson_rate), 1, range(len(self.mut_poisson_rate)))
         #print len(self.mut_poisson_rate)
         # mut_pos is where point mutation happens
-        mut_paralog = mut_pos / (2 * self.num_exon + self.num_intron)
+        mut_paralog = mut_pos / (self.num_exon + self.num_intron)
         
-        mut_pos = mut_pos - mut_paralog * (2 * self.num_exon + self.num_intron)
-##        print('  '.join(self.convert_list_to_seq()) + '  ' + str(self.compare_similarity()))
-##        print mut_paralog, mut_pos
-        if self.num_exon + self.num_intron > mut_pos > self.num_exon - 1:
-            # mutation happens at intronic region
-            intron_pos = mut_pos - self.num_exon
-            old_seq = self.current_seq[mut_paralog][1][intron_pos]
-            prob = np.array(self.intron_mut_Q[self.nt_to_state[self.current_seq[mut_paralog][1][intron_pos]],:])
-            new_state = draw_from_distribution(prob / sum(prob), 1, range(len(prob)))
-            self.current_seq[mut_paralog][1][intron_pos] = 'ACGT'[new_state]
-            new_seq = self.current_seq[mut_paralog][1][intron_pos]
-        elif mut_pos < self.num_exon:
-            exon_pos = mut_pos
-            old_seq = self.current_seq[mut_paralog][0][exon_pos]
-            prob = np.array(self.exon_mut_Q[self.codon_to_state[self.current_seq[mut_paralog][0][exon_pos]],:])
-            new_state = draw_from_distribution(prob / sum(prob), 1, range(len(prob)))
-            self.current_seq[mut_paralog][0][exon_pos] = self.codon_nonstop[new_state]
-            new_seq = self.current_seq[mut_paralog][0][exon_pos]
-        else:
-            exon_pos = mut_pos - self.num_exon - self.num_intron
-            old_seq = self.current_seq[mut_paralog][2][exon_pos]
-            prob = np.array(self.exon_mut_Q[self.codon_to_state[self.current_seq[mut_paralog][2][exon_pos]], :])
-            new_state = draw_from_distribution(prob / sum(prob), 1, range(len(prob)))
-            self.current_seq[mut_paralog][2][exon_pos] = self.codon_nonstop[new_state]
-            new_seq = self.current_seq[mut_paralog][2][exon_pos]
+        mut_pos = mut_pos - mut_paralog * (self.num_exon + self.num_intron)
+
+        exon_pos = mut_pos
+        old_seq = self.current_seq[mut_paralog][exon_pos]
+        prob = np.array(self.exon_mut_Q[self.codon_to_state[self.current_seq[mut_paralog][exon_pos]],:])
+        new_state = draw_from_distribution(prob / sum(prob), 1, range(len(prob)))
+        self.current_seq[mut_paralog][exon_pos] = self.codon_nonstop[new_state]
+        new_seq = self.current_seq[mut_paralog][exon_pos]
 
         self.point_mut_count += 1
 
@@ -320,7 +314,8 @@ class OneBranchIGCSimulator:
         IGC_pos = draw_from_distribution(IGC_J_reshape / sum(IGC_J_reshape), 1, range(len(IGC_J_reshape)))
         IGC_start = IGC_pos / self.IGC_J.shape[1]
         IGC_stop  = IGC_pos - self.IGC_J.shape[1] * IGC_start
-        
+
+        # print IGC_pos, IGC_start, IGC_stop, template_paralog, target_paralog
         self.IGC_copy(IGC_start, IGC_stop, template_paralog, target_paralog)
         # Now updaate mutation rate
         self.get_mutation_rate()
@@ -336,21 +331,26 @@ class OneBranchIGCSimulator:
         tract_1 = paralog_seq_list[template_paralog][start:(stop + 1)]
         tract_2 = paralog_seq_list[target_paralog][start:(stop + 1)]
         compare_result = [tract_1[i] == tract_2[i] for i in range(len(tract_1))]
+        
+        self.IGC_change_sites += stop - start + 1 - sum(compare_result)  # New, track changes due to IGC rather than point mutation
+        
         similarity = (sum(compare_result) + 0.0) / (len(tract_1) + 0.0)
         if similarity > self.IGC_threshold:
             paralog_seq_list[target_paralog] = paralog_seq_list[target_paralog][:start] + paralog_seq_list[template_paralog][start:(stop + 1)] + paralog_seq_list[target_paralog][(stop + 1):]
 
-            new_paralog_seq = [self.convert_seq_to_list(paralog_seq) for paralog_seq in paralog_seq_list]
+            new_paralog_seq = self.convert_seq_to_list(paralog_seq_list)#            [self.convert_seq_to_list(paralog_seq) for paralog_seq in paralog_seq_list]
             self.current_seq = new_paralog_seq
         else:
             self.IGC_failure_count += 1
-        self.IGC_total_count += 1  
+        self.IGC_total_count += 1
+        self.IGC_contribution_count += (stop - start + 1) * 2
+        self.IGC_tract_length = (stop - start + 1)
 
         
     def convert_list_to_seq(self):
         paralog_seq_list = []
         for i in range(self.num_paralog):
-            paralog_seq_list.append(''.join([''.join(j) for j in self.current_seq[i]]))
+            paralog_seq_list.append(''.join(self.current_seq[i]))
 
         return (deepcopy(paralog_seq_list))
         

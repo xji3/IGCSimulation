@@ -11,10 +11,13 @@ from IGCsimulator import OneBranchIGCSimulator, draw_from_distribution
 from CodonGeneconFunc import *
 
 class TreeIGCSimulator:
-    def __init__(self, num_exon, newick_tree,
+    def __init__(self, num_exon, newick_tree, paralog, seq_file, log_file,
                  x_exon, x_IGC, log_folder, div_folder):
         self.newicktree   = newick_tree
         self.num_exon     = num_exon
+        self.pair         = paralog
+        self.seq_file     = seq_file
+        self.log_file     = log_file
         self.edge_to_blen = None
         self.node_to_num  = None
         self.num_to_node  = None
@@ -52,6 +55,12 @@ class TreeIGCSimulator:
         if self.Model == 'MG94':
             self.pair_to_state  = {pair:i for i, pair in enumerate(product(self.codon_nonstop, repeat = 2))}
         self.state_to_pair  = {self.pair_to_state[pair]:pair for pair in self.pair_to_state}
+
+        # Total event counts
+        self.total_mut         = 0  # Total mutation events
+        self.total_IGC         = 0  # Total IGC events
+        self.total_IGC_sites   = 0  # Total IGC affecting sites
+        self.total_IGC_changes = 0  # Total changes due to IGC rather than point mutation
 
 
         self.initiate()
@@ -103,7 +112,7 @@ class TreeIGCSimulator:
         expected_rate = np.dot(self.distn, Qbasic.sum(axis = 1))
         Qbasic = Qbasic / expected_rate
         return Qbasic
-
+    
     def get_tree(self):
         tree = Phylo.read( self.newicktree, "newick")
         #set node number for nonterminal nodes and specify root node
@@ -153,50 +162,50 @@ class TreeIGCSimulator:
 
         self.edge_list = edge_list
 
+    def unpack_x_rates(self, x_rates):
+        for edge_iter in range(len(self.edge_list)):
+            edge = self.edge_list[edge_iter]
+            self.edge_to_blen[edge] = x_rates[edge_iter]
 
     def sim(self):
         self.sim_root()
         for edge in self.edge_list:
-            print edge
-            if edge in self.outgroup:
-                rate_mat = self.mut_Q
-            
+            #print edge, self.edge_to_blen[edge]
+
             # Now need to adapt branchsim
             # create an instance for each branch
             blen = self.edge_to_blen[edge]
             num_exon = self.num_exon
             num_intron = 0
             x_exon = self.x_exon
-            x_IGC  = self.x_IGC
+            x_IGC  = deepcopy(self.x_IGC)
             x_intron = self.x_exon
-            log_file = self.log_folder + 'log.log'
-            div_file = self.div_folder + 'div.log'
+            log_file = self.log_folder + '_'.join(edge) + '_log.log'
+            div_file = self.div_folder + '_'.join(edge) + '_div.log'
             starting_seq = self.node_to_sequence[edge[0]]
-            
+
+            if edge in self.outgroup:
+                x_IGC[0] = 0.0
+                        
             branch_sim = OneBranchIGCSimulator(blen = blen, num_exon = num_exon, num_intron = num_intron,
                                                x_exon = x_exon, x_IGC = x_IGC, x_intron = x_intron,
                                                log_file = log_file, div_file = div_file, initial_seq = starting_seq)
             
-            blen = self.edge_to_blen[edge]
+            blen = self.edge_to_blen[edge] #/10.0
 
             branch_sim.sim_one_branch(starting_seq, blen)
+            self.node_to_sequence[edge[1]] = branch_sim.convert_list_to_seq()
 
-##            end_seq = []
-##            num_IGC = 0
-##            num_All = 0
-##            for site in self.node_to_sequence[edge[0]]:
-##                #print site
-##                site_seq, add_num_IGC, add_num_All = self.sim_one_branch(site, rate_mat, IGC_mat, self.edge_to_blen[edge])
-##                num_IGC += add_num_IGC
-##                num_All += add_num_All
-##                end_seq.append(site_seq)
-##            self.node_to_sim[edge[1]] = [end_seq, num_IGC, num_All]
-##            self.node_to_sequence[edge[1]] = end_seq
-##
-##        for node in self.node_to_sim.keys():
-##            seq1 = ''.join([self.state_to_pair[i][0] for i in self.node_to_sim[node][0]])
-##            seq2 = ''.join([self.state_to_pair[i][1] for i in self.node_to_sim[node][0]])
-##            self.node_to_sequence[node] = (seq1, seq2)
+            self.total_mut += branch_sim.point_mut_count
+            self.total_IGC += branch_sim.IGC_total_count
+            self.total_IGC_sites += branch_sim.IGC_contribution_count
+            self.total_IGC_changes += branch_sim.IGC_change_sites
+
+        self.output_seq()
+        self.get_log()
+
+
+
 
     def sim_root(self):
         if self.Model == 'MG94':
@@ -206,7 +215,30 @@ class TreeIGCSimulator:
         self.node_to_sequence['N0'] = [''.join(seq), ''.join(seq)]
         self.node_to_sim['N0'] = [self.node_to_sequence['N0'], 0, 0]
 
+    def output_seq(self):
+        with open(self.seq_file, 'w+') as f:
+            for node in self.leaves:
+                if not node in self.outgroup[0]:
+                    for paralog_counter in range(self.num_paralog):
+                        paralog = self.pair[paralog_counter]
+                        f.write('>' + node + paralog + '\n')
+                        f.write(self.node_to_sequence[node][paralog_counter] + '\n')
+                else:  # only observe one paralog of the outgroup species
+                    paralog = self.pair[0]
+                    f.write('>' + node + paralog + '\n')
+                    f.write(self.node_to_sequence[node][paralog_counter] + '\n')        
 
+    def get_log(self):
+        with open(self.log_file, 'w+') as f:
+            f.write('Model: ' + self.Model + '  nSites: ' + str(self.num_exon) + ' TreeFile: ' + self.newicktree + '\n')
+            f.write('x_exon: ' + ', '.join([str(parameter) for parameter in self.x_exon]) + '\n')
+            f.write('x_IGC: ' + ', '.join([str(parameter) for parameter in self.x_IGC]) + '\n')
+            f.write('\n'.join(['_'.join(edge) + ': ' + str(self.edge_to_blen[edge]) for edge in self.edge_list]) + '\n')
+            f.write('Total point mutation: ' + str(self.total_mut) + '  Total IGC: ' + str(self.total_IGC)
+                    + '  Total IGC affecting sites: ' + str(self.total_IGC_sites)
+                    + ' Total changes due to IGC: ' + str(self.total_IGC_changes) + '\n')
+            f.write('% change due to IGC: ' + str((self.total_IGC_changes + 0.0) / (self.total_mut + self.total_IGC_changes + 0.0)) + '\n')
+            
 
 if __name__ == '__main__':
     paralog1 = 'YDR418W'
@@ -214,24 +246,71 @@ if __name__ == '__main__':
 
     paralog = [paralog1, paralog2]
     newicktree = './YeastTree.newick'
+    sim_num = 1
     num_exon = 163
     log_folder = './sim1/log/'
     div_folder = './sim1/div/'
+    
 
     tau = 1.409408
 
     
     IGC_geo  = 1.0
     IGC_init = tau / IGC_geo / 3.0  # count for three nucleotides in a codon
-    IGC_threshold = 0.0
+    IGC_threshold = -0.1
     x_IGC = [IGC_init, IGC_geo, IGC_threshold]  # These values vary for the simulation study
 
-    x_exon = [0.49249355302375575, 0.60985035555249456, 0.42155795722934408, 8.1662933909645563, 0.092804167727196338]
-    
-    test = TreeIGCSimulator(num_exon, newicktree, x_exon, x_IGC, log_folder, div_folder)
+    seq_file = './sim' + str(sim_num) + '/' + '_'.join(paralog) + '_MG94_geo_' + str(IGC_geo) + '_Sim_' + str(sim_num) + '.fasta'
+    log_file = './sim' + str(sim_num) + '/' + '_'.join(paralog) + '_MG94_geo_' + str(IGC_geo) + '_Sim_' + str(sim_num) + '.log'
+
+    save_file = './save/MG94_' + '_'.join(paralog) + '_nonclock_save.txt'
+
+    #x_exon = [0.49249355302375575, 0.60985035555249456, 0.42155795722934408, 8.1662933909645563, 0.092804167727196338]
+    pi_a = 2.983653651297249465e-01
+    pi_c = 2.095729139806868369e-01
+    pi_g = 1.871536409219771990e-01
+    pi_t = 3.049080799676109899e-01
+    kappa = 8.404333642032199236
+    omega = 7.618529705823594289e-02
+    x_exon = [pi_a + pi_g, pi_a / (pi_a + pi_g), pi_c / (pi_c + pi_t), kappa, omega]  # parameter from MG94_YDR418W_YEL054C_nonclock_summary.txt
+
+    save_file = './save/MG94_' + '_'.join(paralog) + '_nonclock_save.txt'
+    x_rates = np.exp([-3.925914311698581738, -1.533949335440421891, -1.564219363086546410, -1.762095498829083562, -3.660826292734839171, -3.626559649929371076,
+               -3.438639957077882059, -2.460890888502840657, -3.690966112631306473, -2.870638256407853639, -2.844813362532052192, -3.822236386160084542])
+
+    test = TreeIGCSimulator(num_exon, newicktree, paralog, seq_file, log_file, x_exon, x_IGC, log_folder, div_folder)
+    test.unpack_x_rates(x_rates)
     self = test
 
     test.sim_root()
     self.sim()
 
-    
+##    for edge in self.edge_list:
+##        print edge
+##        if edge in self.outgroup:
+##            rate_mat = self.mut_Q
+##        
+##        # Now need to adapt branchsim
+##        # create an instance for each branch
+##        blen = self.edge_to_blen[edge]
+##        num_exon = self.num_exon
+##        num_intron = 0
+##        x_exon = self.x_exon
+##        x_IGC  = self.x_IGC
+##        x_intron = self.x_exon
+##        log_file = self.log_folder + 'log.log'
+##        div_file = self.div_folder + 'div.log'
+##        starting_seq = self.node_to_sequence[edge[0]]
+##        
+##        branch_sim = OneBranchIGCSimulator(blen = blen, num_exon = num_exon, num_intron = num_intron,
+##                                           x_exon = x_exon, x_IGC = x_IGC, x_intron = x_intron,
+##                                           log_file = log_file, div_file = div_file, initial_seq = starting_seq)
+##
+##
+##        print blen
+##        blen = self.edge_to_blen[edge]
+##        self = branch_sim
+##
+##        branch_sim.sim_one_branch(starting_seq, blen)
+##
+##    self = branch_sim
