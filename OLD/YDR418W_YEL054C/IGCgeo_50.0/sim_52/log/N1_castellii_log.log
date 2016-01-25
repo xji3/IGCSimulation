@@ -1,0 +1,59 @@
+Initial seq: 
+GCTAACCGAGATTTCGCTCTCAAAACAGTTCACTTATTAAGTTACCATACCCAAACCTGCCAATACCTCAAAATGAGTCTTGATGGCGCGAGAACCCCGCCCATTGTTCGAGCAGGTCTTTTGGCACGCATACGATTGTTATGTGGGAATCTATGTTTATCGTCTATGCAAATGCTTAATCAGTATCACCGATATTCTCATGTAGTTAACAACACAACTGTTCTACTCCTTCAGCCCCTTTCTTTTCTGACGTTTACACGTATTAAAGCAGACCACGCATCTGTGCACTCCCTAATAGCATCACTTGACGTGATATTACATTATGCATGCGTGGTGATATTCAAACCGAAGATCACATTAAATCACATCCTGGGAAATGCTATAGAGTACTCAAAGCATGAAAAAGAAAAAGAGGAGTTCGGATTATCGACAGGGGGCGGTCAACAGTCATCACAAAGAATGCTAGCTACTAACACGAGGAAGGTGTCA
+GCTAACCGAGATTTCGCTCTCAAAACAGTTCACTTATTAAGTTACCATACCCAAACCTGCCAATACCTCAAAATGAGTCTTGATGGCGCGAGAACCCCGCCCATTGTTCGAGCAGGTCTTTTGGCACGCATACGATTGTTATGTGGGAATCTATGTTTATCGTCTATGCAAATGCTTAATCAGTATCACCGATATTCTCATGTAGTTAACAACACAACTGTTCTACTCCTTCAGCCCCTTTCTTTCCTGACGTTTACACGTATTAAAGCAGACCATGCATCTGTGCACTCCCCAATAGCATCACTTGACGTGATATTACATTATGCATGCGTGGTGATATTCAAACCGAAGATCACATTAAATCACATCCTGGGAAATGCTATAGAGTACTCAAAGCATGAAAAAGAAAAAGAGGAGTTCGGACTATCGACAGGGGGCGGTCAACAGTCATCACAAAGGATGCTAGCTACTAACACGAGGAAGGTATCA
+Exon model: MG94  Intron model: HKY Exon nsite: 163 Intron nsite: 0 blen: 0.171684721483
+x_exon: 0.485519006052, 0.614528703121, 0.40734821392, 8.40433364203, 0.0761852970582
+x_intron: 0.485519006052, 0.614528703121, 0.40734821392, 8.40433364203, 0.0761852970582
+x_IGC: 0.00939605333333, 0.02, -0.1
+Point mutation at paralog 1 position 137 from	GAG	to	GAA	0.985685071575
+Point mutation at paralog 0 position 152 from	AGA	to	AGG	0.98773006135
+Point mutation at paralog 1 position 71 from	ACA	to	ACG	0.985685071575
+Point mutation at paralog 0 position 80 from	TCT	to	TCC	0.9836400818
+Point mutation at paralog 0 position 50 from	CTA	to	TTA	0.981595092025
+Point mutation at paralog 0 position 82 from	CTG	to	CTA	0.979550102249
+Point mutation at paralog 1 position 114 from	AAA	to	AAG	0.977505112474
+Point mutation at paralog 1 position 52 from	TTA	to	TTG	0.975460122699
+Point mutation at paralog 1 position 31 from	ACC	to	AGC	0.973415132924
+Point mutation at paralog 0 position 106 from	CAT	to	CAC	0.971370143149
+Point mutation at paralog 0 position 123 from	CTG	to	CTA	0.969325153374
+Point mutation at paralog 1 position 108 from	GCA	to	GCG	0.967280163599
+Point mutation at paralog 1 position 48 from	GGG	to	GGT	0.965235173824
+Point mutation at paralog 1 position 99 from	GCA	to	GCG	0.963190184049
+Point mutation at paralog 1 position 138 from	GAG	to	GAA	0.961145194274
+Point mutation at paralog 0 position 74 from	CTA	to	CTT	0.959100204499
+Point mutation at paralog 1 position 111 from	GTG	to	GTA	0.957055214724
+Point mutation at paralog 1 position 145 from	GGC	to	GGT	0.955010224949
+Point mutation at paralog 1 position 103 from	GTG	to	GTA	0.952965235174
+Point mutation at paralog 1 position 52 from	TTG	to	TTA	0.955010224949
+Point mutation at paralog 1 position 68 from	GTT	to	GTC	0.952965235174
+Point mutation at paralog 1 position 134 from	AAA	to	AAG	0.950920245399
+Point mutation at paralog 0 position 101 from	CTT	to	CTA	0.948875255624
+Point mutation at paralog 1 position 29 from	GCG	to	GCA	0.946830265849
+Point mutation at paralog 1 position 68 from	GTC	to	GTG	0.946830265849
+Point mutation at paralog 1 position 154 from	CTA	to	TTA	0.944785276074
+IGC 1 -> 0 : start	272	stop	277	0.946830265849
+Point mutation at paralog 0 position 138 from	GAG	to	GAA	0.948875255624
+Point mutation at paralog 1 position 152 from	AGG	to	AGA	0.946830265849
+Point mutation at paralog 0 position 135 from	GAA	to	GAG	0.944785276074
+Point mutation at paralog 0 position 110 from	GTG	to	GCG	0.942740286299
+Point mutation at paralog 0 position 40 from	TTG	to	CTG	0.940695296524
+IGC 1 -> 0 : start	148	stop	171	0.942740286299
+Point mutation at paralog 0 position 108 from	GCA	to	GCG	0.944785276074
+Point mutation at paralog 1 position 145 from	GGT	to	GGC	0.946830265849
+Point mutation at paralog 0 position 47 from	TGT	to	TGC	0.944785276074
+Point mutation at paralog 0 position 157 from	AAC	to	AAT	0.942740286299
+Point mutation at paralog 0 position 116 from	AAG	to	AAA	0.940695296524
+Point mutation at paralog 0 position 145 from	GGC	to	GGT	0.938650306748
+Point mutation at paralog 0 position 100 from	TCA	to	TCG	0.936605316973
+Point mutation at paralog 1 position 83 from	ACG	to	ACC	0.934560327198
+Point mutation at paralog 0 position 162 from	TCA	to	TCG	0.932515337423
+Point mutation at paralog 1 position 140 from	GGA	to	GGG	0.930470347648
+Point mutation at paralog 1 position 86 from	CGT	to	CGC	0.928425357873
+Point mutation at paralog 0 position 158 from	ACG	to	ACC	0.926380368098
+Point mutation at paralog 0 position 76 from	CTT	to	CTC	0.924335378323
+Point mutation at paralog 0 position 16 from	ACC	to	ACT	0.922290388548
+Point mutation at paralog 1 position 26 from	CTT	to	CTC	0.920245398773
+Point mutation at paralog 0 position 21 from	TAC	to	TAT	0.918200408998
+Point mutation at paralog 0 position 54 from	TCT	to	TCC	0.916155419223
+Point mutation at paralog 0 position 149 from	TCA	to	TCG	0.914110429448
+Point mutation at paralog 0 position 52 from	TTA	to	TTT	0.912065439673

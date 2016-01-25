@@ -9,6 +9,7 @@
 
 from IGCsimulator import OneBranchIGCSimulator, draw_from_distribution
 from CodonGeneconFunc import *
+import cPickle
 
 class TreeIGCSimulator:
     def __init__(self, num_exon, newick_tree, paralog, seq_file, log_file,
@@ -70,6 +71,15 @@ class TreeIGCSimulator:
     def initiate(self):
         self.get_tree()
         self.unpack_x()
+        # If the seed file exists, set numpy's random seed state according to the seed file
+        seed_file = self.log_file.replace('.log', '_seed.log')
+        if os.path.isfile(seed_file):
+            prng = cPickle.load(open(seed_file, 'r'))
+            np.random.set_state(prng.get_state())
+        else:
+            prng = np.random.RandomState()
+            seed_file = self.log_file.replace('.log', '_seed.log')
+            cPickle.dump(prng, open(seed_file, 'w+'))
 
     def unpack_x(self):
         if self.Model == 'MG94':
@@ -203,6 +213,7 @@ class TreeIGCSimulator:
 
         self.output_seq()
         self.get_log()
+        self.write_log()
 
 
 
@@ -239,6 +250,15 @@ class TreeIGCSimulator:
                     + ' Total changes due to IGC: ' + str(self.total_IGC_changes) + '\n')
             f.write('% change due to IGC: ' + str((self.total_IGC_changes + 0.0) / (self.total_mut + self.total_IGC_changes + 0.0)) + '\n')
             
+    def write_log(self):
+
+        label = ['%IGC', '#mut', '#IGC']
+        summary = np.matrix([(self.total_IGC_changes + 0.0) / (self.total_mut + self.total_IGC_changes + 0.0),
+                   self.total_mut, self.total_IGC])
+        short_log_file = self.log_file.replace('.log', '_short.log')
+        footer = ' '.join(label)
+        np.savetxt(open(short_log_file, 'w+'), summary.T, delimiter = ' ', footer = footer)
+
 
 if __name__ == '__main__':
     paralog1 = 'YDR418W'
@@ -256,7 +276,7 @@ if __name__ == '__main__':
 
     
     IGC_geo  = 1.0
-    IGC_init = tau / IGC_geo / 3.0  # count for three nucleotides in a codon
+    IGC_init = tau / IGC_geo 
     IGC_threshold = -0.1
     x_IGC = [IGC_init, IGC_geo, IGC_threshold]  # These values vary for the simulation study
 
