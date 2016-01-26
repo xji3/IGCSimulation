@@ -201,7 +201,7 @@ class TreeIGCSimulator:
                                                x_exon = x_exon, x_IGC = x_IGC, x_intron = x_intron,
                                                log_file = log_file, div_file = div_file, initial_seq = starting_seq)
             
-            blen = self.edge_to_blen[edge] #/10.0
+            blen = self.edge_to_blen[edge] 
 
             branch_sim.sim_one_branch(starting_seq, blen)
             self.node_to_sequence[edge[1]] = branch_sim.convert_list_to_seq()
@@ -303,7 +303,7 @@ if __name__ == '__main__':
     self = test
 
     test.sim_root()
-    self.sim()
+#    self.sim()
 
 ##    for edge in self.edge_list:
 ##        print edge

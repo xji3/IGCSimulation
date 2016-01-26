@@ -394,18 +394,27 @@ if __name__ == '__main__':
     IGC_g = 0.07
     IGC_q = 0.025
     IGC_threshold = 0.8
+
+    tau = 1.409408
+    IGC_geo = 3.0
+    IGC_init = tau / IGC_geo
+    x_IGC = [IGC_init, 1.0 / IGC_geo, IGC_threshold]  # These values vary for the simulation study
+
+
     
     # x_exon and x_intron from MG94_YBR191W_YPL079W_nonclock_save.txt
     x_exon = [0.49249355302375575, 0.60985035555249456, 0.42155795722934408, 8.1662933909645563, 0.092804167727196338]
-    x_IGC = [IGC_g, IGC_q, IGC_threshold]  # These values vary for the simulation study
+#    x_IGC = [IGC_g, IGC_q, IGC_threshold]  # These values vary for the simulation study
     x_intron = [0.49249355302375575, 0.60985035555249456, 0.42155795722934408, 8.1662933909645563]
 
     pi = [0.3003473684188488, 0.21394338106802796, 0.19214618460490698, 0.2935630659082163]
     div_limit = 1 - sum([i **2 for i in pi])
+    initial_seq = ['ATGGTTTTCCCGGCCCCGCTCACAAGCTTAATCTGGCGTTCAATAAATCAAACACCAACCGGTAATAGAATTAGCATGTCTGATCTGCTAATCAATTCGGGTGCACGGCTTTGTAGGGTAGGTCATTGTCAATTGTTTGCCACGGCCTCAGCACACTTTCGGAATTGTTGTGTAAATTGCATAGCTGAAACGATCACGAGGAAATCTAAAGATTCTTTCCTCAAGCTTGATACTCTATTGTCCCTCCTGTCCGCTCTCAGTCCGTCCGGTATACCAATTTCAACAAAGATGGTCCTCTCG', 'ATGGTTTTCCCGGCCCCGCTCACAAGCTTAATCTGGCGTTCAATAAATCAAACACCAACCGGTAATAGAATTAGCATGTCTGATCTGCTAATCAATTCGGGTGCACGGCTTTGTAGGGTAGGTCATTGTCAATTGTTTGCCACGGCCTCAGCACACTTTCGGAATTGTTGTGTAAATTGCATAGCTGAAACGATCACGAGGAAATCTAAAGATTCTTTCCTCAAGCTTGATACTCTATTGTCCCTCCTGTCCGCTCTCAGTCCGTCCGGTATACCAATTTCAACAAAGATGGTCCTCTCG']
+    
     for replicate in range(13, 26):
         log_file = './logs/3rd_log_g_' + str(IGC_g) + '_q_' + str(IGC_q) + '_threshold_' + str(IGC_threshold) + '_rep_' + str(replicate) + '.log'
         div_file = './logs/3rd_div_g_' + str(IGC_g) + '_q_' + str(IGC_q) + '_threshold_' + str(IGC_threshold) + '_rep_' + str(replicate) + '.log'
-        test = OneBranchIGCSimulator(blen, num_exon, num_intron, x_exon, x_IGC, x_intron, log_file, div_file)
+        test = OneBranchIGCSimulator(blen, num_exon, num_intron, x_exon, x_IGC, x_intron, log_file, div_file, initial_seq = initial_seq)
 
         self = test
 
@@ -414,8 +423,8 @@ if __name__ == '__main__':
 ##    test.get_one_point_mutation()
 ##    print test.current_seq
     
-        try:
-            test.sim_one_branch(test.initial_seq, blen)
-        except:
-            print "Failed"
-            test.add_final_seq()
+##        try:
+##            test.sim_one_branch(test.initial_seq, blen)
+##        except:
+##            print "Failed"
+##            test.add_final_seq()
