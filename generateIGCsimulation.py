@@ -17,15 +17,15 @@ if __name__ == '__main__':
     tau = 1.409408
     IGC_threshold = -0.1
 
-    IGC_geo_list = [1.0, 3.0, 10.0, 50.0, 100.0, 500.0]
-    IGC_geo_list = [100.0]
+    IGC_geo_list = [1.0, 3.0, 10.0, 50.0, 100.0, 200.0, 300.0, 400.0, 500.0]
+    IGC_geo_list = [400.0]
     for IGC_geo in IGC_geo_list:
         #IGC_geo  = 1.0
         IGC_init = tau / IGC_geo
         x_IGC = [IGC_init, 1.0 / IGC_geo, IGC_threshold]  # These values vary for the simulation study
         
         #sim_num = 1
-        for sim_num in [ 52]: #range(100):
+        for sim_num in [19]: # range(100):
             log_folder = './' + '_'.join(paralog) + '/IGCgeo_' + str(IGC_geo) + '/sim_' + str(sim_num) + '/log/'
             div_folder = './' + '_'.join(paralog) + '/IGCgeo_' + str(IGC_geo) + '/sim_' + str(sim_num) + '/div/'
 

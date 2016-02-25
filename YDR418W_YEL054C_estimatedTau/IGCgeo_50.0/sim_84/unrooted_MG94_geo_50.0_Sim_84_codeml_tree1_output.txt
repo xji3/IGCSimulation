@@ -1,0 +1,343 @@
+     13    489
+
+castelliiYDR418W                CCC GCG GCA ATT GTG CGC AAA AAG CCA ACG CTT GGC TTT ATA TAT AGA CAA GAC GAT TTC AAA CTC CCA GGT ACT CTT TAC AAT GAT AAC CCT TAT TCG CCC ATA CGC GGA CCG ACT AAT ATA GTG GAT AAG TTC GAG TTA GTA TTC TTA AAC CGA GTA CAG GAC GCG CAA ATG GCT TTT ACG GAT CCT ATT TCA TGT GAC TCA GGT AAC GGG TCC CAG AGC GTC CTA GCT TAT CAC TCT ATT GTA AAC GCA AAG ATT ACT TTG TCA GGT ATT TCT TCC TTT GTG GTC CAA CTA GCC TAC TCT ATA AAG CCG GAC ATT AAG GCC GTT TGT AAT TGG ATC TGG AAT TTC TGG AGC ATG GAG AAA TTC CGA AAG GTC AAC GTC CAA GGA CAT ACA CAG TTA AGA ATG TTC TTT AGC TCA TTG TGC CTT ATA ACC ATG AAT TCC ATT GAC GCG AAG AAG TTG CGC GGT CCT TTA AAA GGA GTA CTG TTA TTG 
+castelliiYEL054C                CCC GCG ACA ACA GTG CGC AAA AAG CCA GTG CTT GGT TCT ATA TAT AGA CAG GAC AAT TTC AAA CTT CTA GGT ACT CTT TAC AAA GAT AAC CCT TAT TCG CCC ATA CGC GGA CCG ACT AAT ATA GTG GAT AAG TTC GAG TTA GTA TTT TTA AAC CGA GTA CAG AAT GCG CAA ATG GCT TTT ACG GAT CCT ATT TTA TGT GAC TCA GGT AAC GAG TTT CAG AGC GTC CCT GCT TAT CAC CCT ATT GTA AAC ACA AAG TTT ACT ATG TCA GGT ACT TCT GCC TTT GTG GGT CAA CTA GCC TAC TCT ATA AGG CCG GAC ATT GAG GCT GTT TGT AAC TGT ATT TGG AAT TTC TGG AGC ATG GAG AAA TTC CGA AAG ATC AAT TTC CAA AGA CTT ACA CAG TTG AGA ATG TGT TTT TGG TCA TTG TAC CTT ATA ACT ATG AAT TCC ATT GAC GCG AAG AAG TTA CGC GGT CCT TTA AAA AGA GTA CTG TTA TTG 
+mikataeYDR418W                  CCC GCA ACA ATC ATG CGC AAA AAG CCA GCG CTT GAT TCT ACA TAT AGA CAA GAT GAT TTC AAA CTT CCA GGT ACT CTC TAC AAT GAT AAC CCT TAT TCG CTC ATA CGC AGA CCA ACC AAT ATA GTG GAT AAG TGC GAG TTA ATA TTT TTA AGC CGG GCA CAG GAT GCG CAA ATG GCT TTT ACG GAT TCT GTT TCT TGT GGC TCA GGT AAC GAG TCT CAA AGC ATC CCT ACC TAT CAC TCT ATT GTA AAC ACG AGG TTT ACT ATG TCA GGT TTT TCT GCC TTT GTG GGC CAA CTA GTC TGC TCT ATA AAG CCG GAC ATT GAG GCT GAC TTT AAC TAT ATC TGG AAT TTG TGG AGC ATA GGG AAA TTT CGA AAG ATC AAC CTC CAA AGA CTT ACG CAG TTG GAA ATA TTC TTT TGT TCA TTG TAT CTT ATA ACT ACG AAT TTC ATA GAC GCG AAA GAG TTG CGC GGT CTT TTA AAA AGG ATA CTG TTA TTG 
+mikataeYEL054C                  CAC GCA ACA ACC ATG CGC AAA AAG CCA GCG CTT GAT TCT ACA TAT AGA CAA GAT AAT CTC AAA TTT CCA GGT ATT TTT TAC AAT CAT AAC CCT TAT TCG CTC ATA CGT GGA CCA ACC AAT ATA GTG GAT AAG TCC GAG TTA GTA TAT TTA AAC CGG GCA CAA GAC GCG CAA ATG ATT TTT ACG GAT TCT ATT TCT TGT GGC TCA GGT AAC GAA TCT CAA AGC ATC CCT ACC TAT CAC TCT ATT GTA AAC ACA AGG TTT ACT ATG TCA GGT TTT TCT GCC ATT ATG GGC CAA CTA GTC TGC TCT ATA AAG CCG GAC ATT GAC GCT GTT TGT AAC TAT ATC TGG AAT TTA TGG AGC ATG GAG AAA TTT CGA AAG ATC AAC TTT CAA GGG CTT ACA CAG TTG AGA ATA TTT TTT TGC TCA TTG TGT CTT ACG ACT ATG AAT TTC ATT GAC GCG AAA AAA TTG CGC GGT TTT TTA AAA AGA GTG TTA TTA TTG 
+kluyveriYDR418W                 CCG GCG ACA ACG ATG CGC AAA AGG CCA GTG CTT AGT TCT ATA TAT AGA CAA GAC GAT TTC AGG CAT CCA AGT ACT CTT TGC AAT AAT AAC CCT TAT TCG CCC ATA CGC AGA CCG ACT AAT GTA ATG GAT AAG TCC GAG TTA GTA TTT TTA ACC CGA GTA CGG GAC GCG CAA ATG GCT TTT ACG GAT CCC ACT TCA TGG GAC TCA GGT AAC GAG CCT CAG AGC GTT CCT GCT TAT CAC TCT ATT GTA AAC ACA AAG TTT ACT ATG TCA GGT ACT TCT ACC TCT GTA GGC CAA CTA GTC TAT TCT ATA AAG CCG GAC ATT GAG GTT GTT CGC GAC TAT ATC TGG AAT TTA TGG AGC ATG GAG AAA TTT CGA AAG ATC AAT TTC CAA GGA CTT ACA CAG TTG GGA ATG TTT TTT TGC CCA TTG TGT CTT ACA ACT ATA AAT TTC ATT GAC GCG AAA AAG TTG CGC GGT CTT TTA AAA AGT GTA CTG TTA TTG 
+paradoxusYDR418W                CCC GCA ACA ACC ATA CGC AAA AAG CCA GCG CTT GAT TCT ATA TAT AGA CAA GAC AAT TTC AAA CTT CCA GGT ACT CTC TAC AAT GAT AAC CCT TAT TCG CTC ATA CGC AGA CCA ACC AAT ATA GTG GAT AAG TGC GAG TTA ATA TTT TTA AGC CGG GCA CAG GAT GCG CAA ATG GCT TTT ACG GAT TCT ATT TCT TGT GGC TCA GGT AAC GAG TCT CAA AGC ATC TCT ACC TAT CAC TCT ATT GTA AAC ACA AGA TTT ACT AAG TCA GGT TTT TCT GCC TTT GTA GGC CAA GCA GCC TAC TCC ATA AAG CCG GAC GTT GAG CCT GAC TTT AAC TAT ATC TGG AAT TTG TGG AGC ATA GGG AAA TTT CGA AAG ATC AAC CTC CAA AGA CTT ACG CAG TTG GAA ATA TTC TTT TGT TCA TTG TAT CTT ATA ACT ACA AAT TTC ATA GAC GCG AAA GAG TTG CGC GGT CTT TTA AAA AGG ATA CCG TTA CTG 
+paradoxusYEL054C                TAC GCA ACA ACC ATG CGC AAA AAG GCA GCG ATT GAT TCT ACA TAT AGA CAA GAT AAT CTC AAA CTT CCA GGT ATT TTT TAC AAT GAT AAC CCT TAT TCG CTC ATA CGT GGA CCA ACC AAT ATA GTG GAT AAG TCC GAG TTA GTA TAT TTA AAC TGG GTA CAA GAC GCG CAA ATG ATT TTT ACG GAT TCT ATT TCT TGT GGC TCA GGT AAC GAG TCT CAA AGC ATC CCT ACC TAT CAC TCC ATT GTA AGC ACA CAG TGT TCC ATG TCA GGT ATT TCT GCC ATT ATG GGC CAA CTA GTC TGC TCT ATA AAG CCG GAC ATT GAC GCT GTT TGT AAC TAT ATC TGC AAT TTA TGG AGC ATG GAG AAA TTT CGA AAG ATC AAC TTC CAA GGA CTT ACA CAG TTG AGA ATA TTT TTT TGC TCA TTG TGT CTT ACG ACT ATG AAT TTC ATT GAC GCG AAA AAG TTG CGC GGT GTT TTA AAA AGA GTG TTA TTA TTG 
+kudriavzeviiYDR418W             CCC GCA ACA ACC ATG CGC AAA AAG CCA GCG CTT GAT TCT ATA TAT AGA CAA GAC AAT TTC AAA CTT CCA GGT ACT CTT TAC AAT GAT AAC CCC TAT TCG CTC ATA CGC AGA CCA ACC GAT ATA GTG AAC AAG TGC GAG TTA ATA TTT TTA AGC CGG GCA CAG GAC GCG CAA ATG GCT TTT ACG GAT CCT ATT TCA TGT GAC TCA GGT AAC GAG TCC CAG AGC GTC CCA GCT TAT CAC CCT ATT GTA AAC ACA AAG TTT ACT ATG TCA GGC TTT TCT GCC TTT ATA GGC CAA GTA GCC TAC TCG ATA AAG CCG GAC ATT GAG GCT GAC TTT AAC TAT ATC GGG AAT TTA TGG AAC ATA GGG AAA TTT CGA AAG ATC AAC CTC CAA AGA CTT ACG CAG TTG GAA ATA TTC TCT TGT TCA TTG TAT CTT ATA ACT ACG AAT TTC ATA AAC GCG AAA GAG TTG CGC GGT CTT TTA AAA AGA GTG TTA TTA TTG 
+kudriavzeviiYEL054C             CAC GCA ACA ACC ATG CGC AAA AAG CCA GCG CTT GAT TCT ATA TAT AGA CAA GAT AAT CTC AAA CTT CCA GGT ACT CTT TAC TAT GAT AAC CCT TGT TCG CTC ATA CGC GGA CCA ACG AAT ATA GTG GAT AAG TCC GAG TTA GTT TAT TTA AAC CGG GCA CAA GAC GCA CAA ATG ATT TTT ACG GAT TCT ATT TCT TGT AGC TCA GGT AAC GAG TCT CAG AGC GTC TCA GCT TAT CAC TCT ATT GTA AAC ACA AAG TTT ACT ATA TCA GGT TTT TCT GCC TTT GTA GGC CAA GTA GCC TAC TCC ATA AAG CCG GAC ATT GAG GCT GAT TGT AAC TAT ATC TGG AAT TTA TGG AGC ATG GAG AAA TTT CGA AGG GTC AAC TTC CAA GGG CTT ACA CAG CTG AGA ATA TTT TTT TGC TCA TTG TGT CTT ACG ACT ATG AAT TTC ATT GAC ACG AAA AAG TTG CGC GGT GTT TTA AAA AGA GTG CTA TTA TTG 
+bayanusYDR418W                  CTC GCA ACA ACC GTG CGC AAA AAG CCA GCG CTT GAT TCT ATA TAT AGA CAA GAC AAT TTC AAA CTC CTA GGT ACT CTT TAT AAT GAC AAC CCT TAT ACG CCC ATA CGC AGA CCA TCC AAT ATA GTG GAT AAG TGC GAG TTA ATA TTT TTA AGC CGG GCA CAA GAC ACG CAA ATG GCT TTT ACG GAT CCT ATT TCA TGT GAC TCA GGT AAC GAG TCC CAG AGC GTC CCA GCT TAT CAC TCT ATT GTA AAC ACA AAG TTT ACT ATG TCA GGT TTT TCT GCC TTT GTA GGC CAA GTA GCT TAC TCC ATA AAG CCG GAC ATT GAG GCT GAC TTT AAC TAT ATC TGG AAT TCC CGG AGC ATA GGG AAA TTT CGA AAG ATC AAC CTC CAA AGA CTT ACG CGG TTG GAA ATA TTC TTT TGT TCA TTG TAT CTT ATA ACT ACG AAT TTC ATA GAC GCG GAA GAG TTG CGC GGT CTT TTA AAA AGG ATA CTG TTA TTG 
+bayanusYEL054C                  CAC GCG ACA ACA GTG CGC AAA AAT CCA GCA CTT GAT TCT ATA AAT AGA CAA GAT AAT CTC AAA CTT CCA GGT ACT CTT TAC AAT GAT AAC CCT TAT TCG CTC ATA CGT GGA CTG ACT AAT ACA GTG GAT AAG TCC GAG TTA GTA TTT TTA AAC CGG GCA CAA GAC GCG CAA ATG ATT TTT ACG GAT TCT ATT TCT TGT GAC TCA GGT AAC GAG TCT CAA AGC ATC CCT ACC TAT CAC TCT ATT GTA AAC ACA AAG TTT ACT ATG TCA GGT TTT TCT GCC TTT GTA GGC CAA GTA GCT TAC TCC ATA AAG CCG GAC ATT GAG GCT GTT TGT AAC TAT ATC TGG AAT TTA TGG AGC ATG GAG AAA TTT CGA AAG ATC AAC TTC CAA GGG CTT ACA CAG TTG AGA ATG TTT TTT TGC TCA TTG TGT CTT ACG ACT ATG AAT TTC ATT GAC GCG AAA AAG TTG CGC GGT GTT TTA AAA AGA GTG TTG TTA TTA 
+cerevisiaeYDR418W               TAC GCA ACA ACC GTG CGC AAA AAG CCA GCG CTT GAT TCT ATA TAT AGA CAA GAC AAT TTC AAA TTT CCA GGT ACT CTC TAC AAT AGT AAC CCT TAT TCG CTC ATA CGT GGA CCA ACC AAT ATA GTG GAT AAG TGC GAG TTA ATA TTT TTA AGC CGG GCA CAG GAT GCG CAA ATG GCT TTT ACG GAT TCT GTT CCT TGT GGC TCA GGT AAC GAG TCT CAA AGC ATC TCT ACC TAT CAC TCT ATT GTA AAC ACA AAG TTT ACT ATG TCA GGT ATT TCT GCC ATT ATG GGC CAA CTA GTC TGC TCT ATA AAG CCG GAC ATT GAG CCT GAC TTT AAC TAT ATC TGG AAT TTA TGG AGC ATG GAG AAA TTT CGA AAG ATC AAC CTC CAA AGA CTT ACG CAG TTG GAA ATA TTC TTT TGT TCA TTG TAT CTT ATA ACT ACG AAT TTC ATA GAC GCG AAA GAG TTG CGC GGT CTT TTA AAA AGG ATA CTG TTA CTG 
+cerevisiaeYEL054C               TAC GCA ACA ACC ATG CGC AAA AAG CCA GCG CTT GAT TCT ACA TAT AGA CAA GAT AAT CTC AAA CTT CCA GGT ATT TTT TAC AAT GAT AAC CCT TAT TCG CTC ATA CGT GGA CCA ACC AAT ATA ATG GAT AAG TCC GAG TTA GTA TAT TTA AAC CGG GCA CAA GAC GCG CAA ATA ATT TTT ACG GAT TCT ATT TCT TGT GGC CCA GGT AAC GAG TCT CAA AGC ATC CCT ACC TAT CAC TCC ATT GTA AGC ACA CAG TGT ACC ATG TCA GGT ATT TCT GCC ATT ATG GGC CAA CTA GTC TGC TCT ATA AAG CTG GAC TTT GAC GCT GTT TGT AAC TAT ATC TGC AAT TTA TGG AGC ATG GAG AAA TTT CGA AGG ATC AAC TTC CAA GGA CTT ACA CAG TTG AGA ATA TTT TTT TGC TCA TTG TGT CTT ACG ACT ATG CAT TTC ATT GAC GCG AAA AAG TTG CGC GGT GTT TTA AAA AGA GTG TTA TTA TTG 
+
+
+
+Printing out site pattern counts
+
+
+        13        456  P
+
+castelliiYDR418W                AAA AAA AAC AAC AAC AAC AAG AAG AAG AAG AAG AAG AAG AAG AAT AAT AAT AAT AAT ACA ACC ACG ACG ACT ACT ACT AGA AGA AGC AGC AGC ATA ATA ATA ATA ATC ATG ATG ATG ATG ATT ATT ATT ATT ATT ATT ATT CAA CAA CAC CAG CAG CAG CAT CCA CCA CCC CCC CCG CCG CCT CCT CCT CGA CGA CGC CGC CTA CTA CTC CTG CTT CTT CTT GAC GAC GAC GAC GAC GAG GAG GAT GAT GAT GAT GCA GCA GCC GCC GCG GCG GCG GCT GCT GGA GGA GGA GGC GGG GGT GGT GGT GTA GTA GTA GTA GTC GTC GTC GTC GTG GTG GTG GTT TAC TAC TAT TAT TAT TCA TCA TCA TCA TCC TCC TCC TCG TCT TCT TCT TGC TGG TGG TGG TGT TGT TTA TTA TTC TTC TTC TTC TTC TTC TTG TTG TTG TTG TTT TTT TTT TTT 
+castelliiYEL054C                ... ... ... ... ... ..T ... ... ... ... ... ... .G. G.. ..A ..C ... ... ... ... ..T ... GT. ... ... ... ... ... ... ... T.G ... ... ... ... ..T ... ... ... ... .CA .C. ... ... ... ... T.. ... ..G ... ... ... ... .T. ... .T. ... ... ... ... ... ... ... ... ... ... ... .CT ... ..T ... ... ... ... A.T ... ... ... ... ... ... A.. ... ... ... A.. A.. ... ..T ... ... ... ... ... A.. A.. ... ..T .A. ... ... ... ... ... ... ... A.. .GT ... T.. ... ... ... ... ... ... ... ... ... ... ... ... .T. G.. ... .TT ... C.. ... ... .A. ... ... ..T ... ... ... ..G .GT ... ... ... ... ..T A.. ..A ... ... .C. ... ... ... 
+mikataeYDR418W                  ... ... ... ... .G. ... ..A ... ... ... .G. G.. ... G.. ... ..C ... ... ... ..G ..T ... G.. ..C ... ... ... GA. ... ... T.T .C. ... ... ... ... .C. ..A ..A ... ..C T.. ..A ... ... G.. T.. ... ... ... ..A ... ... .T. ... ... ... .T. ..A ... ... .T. T.. ... ..G ... ... .CT ... ..T ... ..C ... ... ..T ... ... ..T .G. ... .G. ... ... ... ... A.. A.G .T. ..T ..A ... ... A.C ... A.. A.G A.. .AT .A. ... ... ... A.. A.. .C. ... A.. .G. A.. C.. A.. ... ... .AC ... .G. ... ... ... ... ... ... ..T G.. .T. ..T ... ... ... ... .AT ... ... .AT ... .T. ... ..G ... .G. ... ..G ..T ..T A.. ... ... ... .C. ... ... ... 
+mikataeYEL054C                  ... ... ... ... ... ... ..A ... ... ... .G. ..A ... G.C ... ..C ... ... ... ... ..T ... G.. ..C ... .T. ... ... ... ... T.. .C. .CG ... ... ... ... ..A ... ... .CC T.. ... ... ... ... T.. ... ... ... ..A ..A ... .T. ... ... .A. .T. ..A ... ... TT. T.. ... ..G ... ..T .CT ... T.T T.A T.. ... ... ... ... ... ..T .G. ... ... A.. C.. ... ... A.. A.. .T. ..T ..A ... ... A.C AT. ..G A.. ... .AT .AA ... ... ... ... ..G .C. ... A.. .G. A.. T.T A.. A.. ... ... ... .G. ... ... ... ... ... ... ..T G.. .T. ..T ... ... ... ... ..T ... ... .AT ... ... ... ..G ..T .C. C.. ..A ..T .AT A.. ... ... ... .C. A.. ... ... 
+kluyveriYDR418W                 ... .GG ... ... .C. ..T ..A ... ... .G. ... ... ... G.. ... G.C ... ... ... ... ..T ... GT. ... ... ... ... G.. ... ... T.. ... .C. ... G.. ... ..A ... ... ... .CG .C. ... ... ... .C. T.. ... ... ... ... .G. ... .T. ... ... ..G ... ... ... ... .T. ..C ... ... ... ... .CT ... .AT ... ... ... ... ... ... ... ... ... ... ... ... A.. ... ... A.. A.. .T. .TT ... ... ... ... ... ... A.T A.. A.T .A. A.. ... ... ... ... ... ... A.. .G. ..T T.. A.. ..A A.. ... .G. ..T ... ... ... C.. ... ... ... A.. .T. C.T ... ... ... ... ..T ... ... .AT ..G C.C ... ..G ..T .C. ... ..A ..T ..T A.. ... ... ... .C. .C. ... ... 
+paradoxusYDR418W                ... ... ... ... .G. ... ..A ... ... ... .GA G.. ... G.. ... ..C ... ... ... ..G ..T ... G.. ..C ... ... ... GA. ... ... T.T ... ... ... ... ... .CA ..A ..A ... .CC T.. ..A ... G.. ... T.. ... ... ... ..A ... ... .T. ... ... ... .T. ..A ... ... .T. T.. ... ..G ... ... TCT GC. ..T .C. ..C ... ... ..T ... ... ... .G. ... .G. A.. ... ... ... A.. A.. ... C.T ..A ... ... A.C ... A.. A.G A.. .AT .A. ... ... ... A.. A.. .C. ... A.. .G. A.. C.. A.A ..A ... .AC ... ... ... ... ... ... ... ... ..T G.. .T. ..T ... ... ..C ... .AT ... ... .AT ... .T. ... ..G ... .G. ... ..G ..T ..T AA. ... C.. ... .C. ... ... ... 
+paradoxusYEL054C                ... ... ... .G. ... ... ..A ... ... ... C.. ... ... G.C ... ..C ... ... ... ... ..T ... G.. ..C T.C .T. ... ... ... ... T.. .C. .CG ... ... ... ... ..A ... ... .CC ... ... ... ... ... TG. ... ... ... ..A ..A ... .T. G.. ... TA. .T. ..A ... ... GT. T.. ... T.G ... ..T .CT ... ..T T.A T.. A.. ... ... ... ... ..T .G. ... ... A.. ... ... ... A.. A.. .T. ..T ..A ... ... A.C AT. ... A.. ... .AT .A. ... ... ... ... ..G ... ... A.. .G. A.. T.. A.. A.. ... ... ... .G. ... ... ... ... ... ... ..T G.. .T. ..T ... ..C ... ... ..T ..C ... .AT ... ... ... ..G ..T .C. C.. ..A ..T .AT A.. ... ... ... .C. A.. ... ... 
+kudriavzeviiYDR418W             ... ... ... ... .G. ... ..A ... ... ... ... G.. ... G.. ... ..C ... ... G.. ..G ..T ... G.. ..C ... ... ... GA. .A. ... T.T ... ... ... ... ... .C. ..A ..A ... .CC T.. ..A ... ... ... T.. ... ... ... ... ... ... .T. ... ... ... .T. ..A ... ..C .T. ... ... ..G ... ... .C. G.. ..T T.A ... ... ... ... A.. ... ... ... ... .G. A.. ... A.C ... A.. A.. ... ..T ..A ... ... ... ... A.. A.. A.. .AT .A. ... ..C ... A.. ..G .C. ... A.. .G. ... C.. A.. A.A ... .AC ... ... ... ... ... ... ... ... ... G.. .T. ... ... C.. ..G ... .AT G.. ... .AT ... .T. ... ..G ... .G. ... ..A ..T ..T A.. ... ... ... .C. ... .C. ... 
+kudriavzeviiYEL054C             ... ... ... ... ... ... ..A ... .G. ... ... ... ... G.. T.. ..C ... ... ... ... ..T ... G.. ..G ... ... ... ... ... ... T.. ... .CG ... ... ... ... ..A ... ... .CC T.. ... ... ... ... T.. ... ... ... ... ..A ... .T. ... ... .A. .T. ..A ... ... GT. T.. ... ..G ... ... TC. G.. ..T ..A ... ... ... ... ... ... ..T AG. ... ... A.. ... ... ... A.. A.. ... ..T ..A A.. ..A ... AT. ..G A.. ... .AT .A. ... ... ... ..T ..G .C. ... ... .G. ... T.. A.. ..A ... .A. ... ... ... ... .G. ... ... ... ..T G.. .T. ..T ... ... ..C ... ..T ... ... .AT ... ... ... C.G ..T .C. C.. ..A ..T .AT A.A ... ... ... .C. ... ... ... 
+bayanusYDR418W                  ... ... ... ... .G. ... G.A ... ... ... ... G.. ... G.. ... ..C ... ... ... ..G ..T ... G.. T.C ... ... ... GA. ... ... T.T ... ... ... ... ... .C. ..A ..A ... .CC T.. ..A ... ... ... T.. ... ... ... ... ..A .G. .T. ... .T. .T. ... ..A ... ... .T. ... ... ..G ... ... .C. G.. ... ... ... ... ... ... ... ... ... ... ... .G. A.. ..C ... ... A.. A.. ..T ..T ..A ... A.. ... ... A.. A.G A.. .AT .A. ... ... ... A.. A.. .C. ... A.. .G. ... C.. ... ..A ... .AC ..T ... ... ... ... ... ... ... ... G.. .T. ... A.. ... ..C ... .AT ... C.. .AT ... .T. ... ..G ... .G. ... .C. ..T ..T A.. ... ... ... .C. ... ... ... 
+bayanusYEL054C                  ... ... ... ... ... ... ..A ... ... ..T ... ... ... G.. ... ..C ... ... ... ... ..T ... G.A ... ... ... ... ... ... ... T.. ... .CG ... .C. ... ... ... ... ... .CA T.. ... ... ... ... T.. ... ... ... ..A ..A ... .T. ... ... .A. .T. .T. ... ... GT. T.. ... ..G ... ..T .CT G.. ..T T.. ... ... ... ... ... ... ..T ... ... ... A.. ... ... ... A.. A.. ..T ..T ... ... ... A.C AT. ..G A.. ... .AT .A. ... ... ... ... ..G .C. ... A.. .G. A.. T.. ... ..A ... ... ... ... A.. ... ... ... ... ... ..T G.. .T. ..T ... ... ..C ... ..T ... ... .AT ... ... ... ..G ..T .C. C.. ..A ..T ..T A.. ... ..A ... .C. ... ... ... 
+cerevisiaeYDR418W               ... ... ... ... .G. ... ..A ... ... ... ... G.. ... G.. ... ..C ... ... ... ..G ..T ... G.. ..C ... ... ... GA. ... ... T.T ... ... ... ... ... .C. ..A ... ... .CC ... ..A ... ... G.. T.. ... ... ... ..A ... ... .T. ... ... TA. .T. ..A ... ... .T. T.. ... ..G ... ..T TCT ... T.T ... ..C ... ... ..T ... ... ... .G. ... ... A.. AG. ... ... A.. A.. .T. C.T ..A ... ... A.C ... A.. A.G ... .AT .A. ... ... ... A.. A.. .C. ... A.. .G. A.. C.. ... A.. ... .AC ... .G. ... ... ... ... ... ... C.T G.. .T. ..T ... ... ... ... .AT ... ... .AT ... .T. ... ..G ... .G. ... ..A ..T ..T A.. ... C.. ... .C. A.. ... ... 
+cerevisiaeYEL054C               ... ... ... .G. ... ... ..A ... .G. ... C.. ... ... G.C ... ..C ... C.. ... ... ..T ... G.. ..C ..C .T. ... ... ... ... T.. .C. .CG ... ... ... ... ..A ... ..A .CC ... ... ... T.. ... TG. ... ... ... ..A ..A ... .T. ... ... TA. .T. ..A .T. ... GT. T.. ... ..G ... ..T .CT ... ..T T.A T.. ... ... ... ... ... ..T .G. ... ... A.. ... ... ... A.. A.. .T. ..T ..A ... ... A.C AT. ... A.. ... .AT .A. ... ... ... ... ..G .C. ... A.. .G. A.. T.. A.. A.. A.. ... ... .G. ... ... ... ... C.. ... ..T G.. .T. ..T ... ..C ... ... ..T ..C ... .AT ... ... ... ..G ..T .C. C.. ..A ..T .AT A.. ... ... ... .C. A.. ... ... 
+
+    3    1    2    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    2    1    1    1    1    1    1    1    1    1    1    1
+    1    1    3    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    2    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    2    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    4    1    1    1    1    1    1    1    1    1    1    1    1    1
+    1    1
+
+CODONML (in paml version 4.8a, August 2014)  /Users/xji3/GitFolders/IGCSimulation/YDR418W_YEL054C_estimatedTau/IGCgeo_50.0/sim_84/YDR418W_YEL054C_MG94_geo_50.0_Sim_84.fasta
+Model: One dN/dS ratio for branches, 
+Codon frequency model: F1x4MG
+ns =  13  ls = 163
+
+Codon usage in sequences
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   4   6   8  10   6   8 | Ser TCT   3   3   7   7   5   7 | Tyr TAT   3   3   5   5   5   5 | Cys TGT   2   4   2   3   1   2
+    TTC   6   5   3   1   3   3 |     TCC   3   1   0   1   1   1 |     TAC   2   3   1   1   0   2 |     TGC   1   0   2   2   2   1
+Leu TTA   5   6   4   6   5   4 |     TCA   4   3   3   3   3   3 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   4   3   5   4   4   4 |     TCG   1   1   1   1   1   1 |     TAG   0   0   0   0   0   0 | Trp TGG   3   3   2   2   3   2
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   3   5   5   3   5   5 | Pro CCT   3   5   2   2   3   2 | His CAT   1   0   0   1   1   0 | Arg CGT   0   0   0   1   0   0
+    CTC   1   0   3   2   0   3 |     CCC   2   2   1   0   2   1 |     CAC   1   1   1   2   1   1 |     CGC   3   3   3   2   4   3
+    CTA   2   2   1   1   1   0 |     CCA   2   1   3   3   3   3 | Gln CAA   4   3   5   6   4   5 |     CGA   2   2   1   1   2   1
+    CTG   1   1   1   0   1   1 |     CCG   2   2   1   1   3   2 |     CAG   3   4   2   1   2   2 |     CGG   0   0   1   1   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   7   5   2   7   3   2 | Thr ACT   3   5   3   2   6   3 | Asn AAT   5   6   4   5   6   5 | Ser AGT   0   0   0   0   3   0
+    ATC   1   1   4   3   2   3 |     ACC   1   0   2   3   2   3 |     AAC   5   5   5   6   3   5 |     AGC   3   2   3   2   2   3
+    ATA   5   5   9   4   4  11 |     ACA   1   4   2   4   4   3 | Lys AAA   4   5   5   6   4   5 | Arg AGA   2   4   3   3   2   4
+Met ATG   4   5   3   6   6   1 |     ACG   2   1   4   2   2   2 |     AAG   8   6   4   4   5   5 |     AGG   0   1   2   1   2   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   1   1   1   1   3   1 | Ala GCT   2   3   2   1   2   1 | Asp GAT   4   3   7   4   3   5 | Gly GGT   4   6   4   4   3   4
+    GTC   4   1   1   1   1   0 |     GCC   2   2   1   1   0   2 |     GAC   5   4   3   4   6   4 |     GGC   1   0   2   2   1   2
+    GTA   4   4   1   2   6   2 |     GCA   2   0   2   2   0   3 | Glu GAA   0   0   1   1   0   1 |     GGA   3   1   0   1   2   0
+    GTG   3   4   2   2   1   1 |     GCG   3   3   3   3   3   3 |     GAG   2   4   4   2   4   4 |     GGG   1   0   1   1   0   1
+--------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Phe TTT   5   7   7   8   8   7 | Ser TCT   6   3   6   3   6   7 | Tyr TAT   5   5   5   6   3   5 | Cys TGT   4   2   4   2   3   2
+    TTC   2   3   2   3   2   3 |     TCC   3   1   2   4   2   0 |     TAC   2   2   2   1   2   2 |     TGC   3   1   1   1   1   2
+Leu TTA   6   6   5   4   6   5 |     TCA   3   4   4   4   3   3 | *** TAA   0   0   0   0   0   0 | *** TGA   0   0   0   0   0   0
+    TTG   4   4   3   4   4   3 |     TCG   1   2   1   0   1   1 |     TAG   0   0   0   0   0   0 | Trp TGG   2   1   2   1   2   2
+--------------------------------------------------------------------------------------------------------------------------------------
+Leu CTT   3   6   5   5   5   4 | Pro CCT   2   2   1   2   2   3 | His CAT   0   0   0   0   0   0 | Arg CGT   1   0   0   0   1   1
+    CTC   2   2   2   3   2   3 |     CCC   0   2   0   1   0   0 |     CAC   1   1   2   1   2   1 |     CGC   2   3   3   3   2   2
+    CTA   1   0   1   1   0   1 |     CCA   2   4   3   3   2   3 | Gln CAA   6   4   5   5   6   5 |     CGA   1   1   1   1   1   1
+    CTG   0   0   1   1   1   2 |     CCG   1   1   1   1   1   1 |     CAG   2   3   2   1   1   2 |     CGG   0   1   1   3   1   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Ile ATT   9   3   5   3   5   4 | Thr ACT   1   3   3   3   4   3 | Asn AAT   5   4   4   5   7   5 | Ser AGT   0   0   0   0   0   1
+    ATC   3   2   1   2   3   3 |     ACC   3   2   1   1   1   3 |     AAC   5   8   6   5   6   5 |     AGC   3   2   3   3   2   3
+    ATA   4  10   6  10   3   9 |     ACA   4   2   3   2   5   2 | Lys AAA   5   5   5   4   5   5 | Arg AGA   3   4   3   3   3   2
+Met ATG   6   3   4   2   5   4 |     ACG   2   3   4   5   2   3 |     AAG   5   5   5   5   5   5 |     AGG   0   0   1   1   0   1
+--------------------------------------------------------------------------------------------------------------------------------------
+Val GTT   2   0   2   0   2   1 | Ala GCT   1   3   2   4   2   1 | Asp GAT   5   4   6   3   5   4 | Gly GGT   4   3   4   4   4   4
+    GTC   1   1   2   1   0   1 |     GCC   1   2   2   1   1   1 |     GAC   4   5   3   7   4   4 |     GGC   2   2   1   1   1   2
+    GTA   3   2   3   3   4   1 |     GCA   2   2   3   2   2   2 | Glu GAA   0   1   0   2   0   1 |     GGA   2   0   1   0   1   1
+    GTG   2   2   2   2   3   2 |     GCG   3   3   1   2   3   3 |     GAG   3   4   4   4   4   5 |     GGG   0   2   1   1   1   0
+--------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------
+Phe TTT   6 | Ser TCT   6 | Tyr TAT   5 | Cys TGT   4
+    TTC   2 |     TCC   2 |     TAC   2 |     TGC   3
+Leu TTA   6 |     TCA   2 | *** TAA   0 | *** TGA   0
+    TTG   4 |     TCG   1 |     TAG   0 | Trp TGG   1
+------------------------------------------------------
+Leu CTT   4 | Pro CCT   2 | His CAT   1 | Arg CGT   1
+    CTC   2 |     CCC   0 |     CAC   1 |     CGC   2
+    CTA   1 |     CCA   4 | Gln CAA   6 |     CGA   1
+    CTG   1 |     CCG   0 |     CAG   2 |     CGG   1
+------------------------------------------------------
+Ile ATT   7 | Thr ACT   1 | Asn AAT   4 | Ser AGT   0
+    ATC   3 |     ACC   4 |     AAC   5 |     AGC   3
+    ATA   5 |     ACA   4 | Lys AAA   5 | Arg AGA   3
+Met ATG   6 |     ACG   2 |     AAG   4 |     AGG   1
+------------------------------------------------------
+Val GTT   2 | Ala GCT   1 | Asp GAT   5 | Gly GGT   4
+    GTC   1 |     GCC   1 |     GAC   4 |     GGC   2
+    GTA   2 |     GCA   2 | Glu GAA   0 |     GGA   2
+    GTG   1 |     GCG   3 |     GAG   3 |     GGG   0
+------------------------------------------------------
+
+Codon position x base (3x4) table for each sequence.
+
+#1: castelliiYDR418W
+position  1:    T:0.25153    C:0.18405    A:0.31288    G:0.25153
+position  2:    T:0.33742    C:0.22086    A:0.28834    G:0.15337
+position  3:    T:0.27607    C:0.25153    A:0.24540    G:0.22699
+Average         T:0.28834    C:0.21881    A:0.28221    G:0.21063
+
+#2: castelliiYEL054C
+position  1:    T:0.25153    C:0.19018    A:0.33742    G:0.22086
+position  2:    T:0.33129    C:0.22086    A:0.28834    G:0.15951
+position  3:    T:0.33742    C:0.18405    A:0.24540    G:0.23313
+Average         T:0.30675    C:0.19836    A:0.29039    G:0.20450
+
+#3: mikataeYDR418W 
+position  1:    T:0.26380    C:0.18405    A:0.33742    G:0.21472
+position  2:    T:0.32515    C:0.22699    A:0.28834    G:0.15951
+position  3:    T:0.31902    C:0.21472    A:0.24540    G:0.22086
+Average         T:0.30266    C:0.20859    A:0.29039    G:0.19836
+
+#4: mikataeYEL054C 
+position  1:    T:0.28221    C:0.16564    A:0.35583    G:0.19632
+position  2:    T:0.32515    C:0.22086    A:0.29448    G:0.15951
+position  3:    T:0.34356    C:0.20245    A:0.26380    G:0.19018
+Average         T:0.31697    C:0.19632    A:0.30470    G:0.18200
+
+#5: kluyveriYDR418W
+position  1:    T:0.23926    C:0.20245    A:0.34356    G:0.21472
+position  2:    T:0.31288    C:0.24540    A:0.26994    G:0.17178
+position  3:    T:0.33742    C:0.18405    A:0.24540    G:0.23313
+Average         T:0.29652    C:0.21063    A:0.28630    G:0.20654
+
+#6: paradoxusYDR418W
+position  1:    T:0.26380    C:0.18405    A:0.34356    G:0.20859
+position  2:    T:0.30061    C:0.24540    A:0.30061    G:0.15337
+position  3:    T:0.30675    C:0.22699    A:0.27607    G:0.19018
+Average         T:0.29039    C:0.21881    A:0.30675    G:0.18405
+
+#7: paradoxusYEL054C
+position  1:    T:0.28221    C:0.14724    A:0.35583    G:0.21472
+position  2:    T:0.32515    C:0.21472    A:0.29448    G:0.16564
+position  3:    T:0.32515    C:0.22699    A:0.25767    G:0.19018
+Average         T:0.31084    C:0.19632    A:0.30266    G:0.19018
+
+#8: kudriavzeviiYDR418W
+position  1:    T:0.25153    C:0.18405    A:0.34356    G:0.22086
+position  2:    T:0.31288    C:0.23926    A:0.31288    G:0.13497
+position  3:    T:0.27607    C:0.23926    A:0.27607    G:0.20859
+Average         T:0.28016    C:0.22086    A:0.31084    G:0.18814
+
+#9: kudriavzeviiYEL054C
+position  1:    T:0.26994    C:0.17178    A:0.33129    G:0.22699
+position  2:    T:0.31288    C:0.22699    A:0.30061    G:0.15951
+position  3:    T:0.33129    C:0.20245    A:0.26380    G:0.20245
+Average         T:0.30470    C:0.20041    A:0.29857    G:0.19632
+
+#10: bayanusYDR418W 
+position  1:    T:0.25153    C:0.19018    A:0.33129    G:0.22699
+position  2:    T:0.31902    C:0.23313    A:0.30061    G:0.14724
+position  3:    T:0.29448    C:0.23313    A:0.26994    G:0.20245
+Average         T:0.28834    C:0.21881    A:0.30061    G:0.19223
+
+#11: bayanusYEL054C 
+position  1:    T:0.26380    C:0.16564    A:0.34356    G:0.22699
+position  2:    T:0.32515    C:0.22699    A:0.30675    G:0.14110
+position  3:    T:0.34969    C:0.19018    A:0.25153    G:0.20859
+Average         T:0.31288    C:0.19427    A:0.30061    G:0.19223
+
+#12: cerevisiaeYDR418W
+position  1:    T:0.25767    C:0.18405    A:0.35583    G:0.20245
+position  2:    T:0.32515    C:0.22086    A:0.30061    G:0.15337
+position  3:    T:0.31902    C:0.21472    A:0.25153    G:0.21472
+Average         T:0.30061    C:0.20654    A:0.30266    G:0.19018
+
+#13: cerevisiaeYEL054C
+position  1:    T:0.26994    C:0.17791    A:0.34969    G:0.20245
+position  2:    T:0.32515    C:0.21472    A:0.28834    G:0.17178
+position  3:    T:0.32515    C:0.22699    A:0.26380    G:0.18405
+Average         T:0.30675    C:0.20654    A:0.30061    G:0.18609
+
+Sums of codon usage counts
+------------------------------------------------------------------------------
+Phe F TTT      90 | Ser S TCT      69 | Tyr Y TAT      60 | Cys C TGT      35
+      TTC      38 |       TCC      21 |       TAC      22 |       TGC      20
+Leu L TTA      68 |       TCA      42 | *** * TAA       0 | *** * TGA       0
+      TTG      50 |       TCG      13 |       TAG       0 | Trp W TGG      26
+------------------------------------------------------------------------------
+Leu L CTT      58 | Pro P CCT      31 | His H CAT       4 | Arg R CGT       5
+      CTC      25 |       CCC      11 |       CAC      16 |       CGC      35
+      CTA      12 |       CCA      36 | Gln Q CAA      64 |       CGA      16
+      CTG      11 |       CCG      17 |       CAG      27 |       CGG      12
+------------------------------------------------------------------------------
+Ile I ATT      62 | Thr T ACT      40 | Asn N AAT      65 | Ser S AGT       4
+      ATC      31 |       ACC      26 |       AAC      69 |       AGC      34
+      ATA      85 |       ACA      40 | Lys K AAA      63 | Arg R AGA      39
+Met M ATG      55 |       ACG      34 |       AAG      66 |       AGG      11
+------------------------------------------------------------------------------
+Val V GTT      17 | Ala A GCT      25 | Asp D GAT      58 | Gly G GGT      52
+      GTC      15 |       GCC      17 |       GAC      57 |       GGC      19
+      GTA      37 |       GCA      24 | Glu E GAA       7 |       GGA      14
+      GTG      27 |       GCG      36 |       GAG      47 |       GGG       9
+------------------------------------------------------------------------------
+
+
+Codon position x base (3x4) table, overall
+
+position  1:    T:0.26144    C:0.17933    A:0.34167    G:0.21756
+position  2:    T:0.32138    C:0.22747    A:0.29495    G:0.15621
+position  3:    T:0.31855    C:0.21520    A:0.25814    G:0.20812
+Average         T:0.30046    C:0.20733    A:0.29825    G:0.19396
+
+Codon frequencies under model, for use in evolver (TTT TTC TTA TTG ... GGG):
+  0.02890043  0.01994281  0.02868860  0.01865667
+  0.01994281  0.01376158  0.01979663  0.01287408
+  0.02868860  0.01979663  0.00000000  0.00000000
+  0.01865667  0.01287408  0.00000000  0.01204381
+  0.01994281  0.01376158  0.01979663  0.01287408
+  0.01376158  0.00949621  0.01366071  0.00888379
+  0.01979663  0.01366071  0.01965153  0.01277971
+  0.01287408  0.00888379  0.01277971  0.00831086
+  0.02868860  0.01979663  0.02847831  0.01851992
+  0.01979663  0.01366071  0.01965153  0.01277971
+  0.02847831  0.01965153  0.02826957  0.01838417
+  0.01851992  0.01277971  0.01838417  0.01195553
+  0.01865667  0.01287408  0.01851992  0.01204381
+  0.01287408  0.00888379  0.01277971  0.00831086
+  0.01851992  0.01277971  0.01838417  0.01195553
+  0.01204381  0.00831086  0.01195553  0.00777488
+
+
+
+Nei & Gojobori 1986. dN/dS (dN, dS)
+(Note: This matrix is not used in later ML. analysis.
+Use runmode = -2 for ML pairwise comparison.)
+
+castelliiYDR418W    
+castelliiYEL054C     0.5321 (0.0901 0.1694)
+mikataeYDR418W       0.4707 (0.1492 0.3170) 0.5418 (0.1345 0.2481)
+mikataeYEL054C       0.4270 (0.1533 0.3591) 0.4525 (0.1353 0.2991) 0.4835 (0.0954 0.1973)
+kluyveriYDR418W      0.6625 (0.1496 0.2257) 0.7998 (0.1268 0.1586) 0.5484 (0.1524 0.2779) 0.5352 (0.1516 0.2833)
+paradoxusYDR418W     0.4700 (0.1687 0.3589) 0.4953 (0.1411 0.2848) 0.5827 (0.0381 0.0653) 0.5223 (0.1246 0.2386) 0.6126 (0.1691 0.2761)
+paradoxusYEL054C     0.5054 (0.1665 0.3295) 0.5455 (0.1482 0.2717) 0.6943 (0.1245 0.1793) 0.6223 (0.0391 0.0628) 0.6437 (0.1672 0.2598) 0.7057 (0.1549 0.2195)
+kudriavzeviiYDR418W  0.5439 (0.1542 0.2835) 0.3966 (0.1188 0.2996) 0.3331 (0.0606 0.1820) 0.5746 (0.1307 0.2274) 0.5424 (0.1541 0.2841) 0.3358 (0.0607 0.1809) 0.7416 (0.1547 0.2086)
+kudriavzeviiYEL054C  0.4177 (0.1349 0.3230) 0.4534 (0.1267 0.2794) 0.4864 (0.1173 0.2412) 0.5027 (0.0676 0.1344) 0.6143 (0.1509 0.2456) 0.4417 (0.1113 0.2521) 0.6571 (0.0881 0.1341) 0.5667 (0.1127 0.1989)
+bayanusYDR418W       0.5747 (0.1498 0.2607) 0.3793 (0.1146 0.3021) 0.3999 (0.0652 0.1630) 0.5286 (0.1487 0.2812) 0.5947 (0.1629 0.2739) 0.4078 (0.0638 0.1566) 0.6870 (0.1751 0.2548) 0.4632 (0.0580 0.1252) 0.6039 (0.1256 0.2080)
+bayanusYEL054C       0.3741 (0.1220 0.3261) 0.4091 (0.1048 0.2561) 0.4211 (0.1078 0.2560) 0.4719 (0.0588 0.1246) 0.5712 (0.1345 0.2355) 0.4202 (0.1095 0.2607) 0.6358 (0.0790 0.1243) 0.3796 (0.1094 0.2882) 0.3245 (0.0520 0.1603) 0.4273 (0.1159 0.2713)
+cerevisiaeYDR418W    0.5130 (0.1648 0.3212) 0.5308 (0.1358 0.2559) 1.1163 (0.0520 0.0466) 0.5105 (0.0953 0.1866) 0.6431 (0.1694 0.2634) 1.1356 (0.0635 0.0559) 0.7149 (0.1166 0.1630) 0.5320 (0.0883 0.1660) 0.4894 (0.1218 0.2489) 0.5690 (0.0901 0.1584) 0.4705 (0.1122 0.2386)
+cerevisiaeYEL054C    0.5511 (0.1802 0.3270) 0.5988 (0.1615 0.2696) 0.7357 (0.1310 0.1781) 0.7167 (0.0447 0.0623) 0.6755 (0.1742 0.2579) 0.7271 (0.1585 0.2180)-1.0000 (0.0323 0.0000) 0.7799 (0.1615 0.2071) 0.6628 (0.0883 0.1332) 0.7200 (0.1821 0.2530) 0.6890 (0.0851 0.1235) 0.7595 (0.1230 0.1619)
+
+
+TREE #  1:  ((((((12, 6), 3), 8), 10), 1), (((((13, 7), 4), 9), 11), 2), 5);   MP score: 301
+lnL(ntime: 23  np: 28):  -2217.596029      +0.000000
+  14..15   15..16   16..17   17..18   18..19   19..12   19..6    18..3    17..8    16..10   15..1    14..20   20..21   21..22   22..23   23..24   24..13   24..7    23..4    22..9    21..11   20..2    14..5  
+ 0.017692 0.206242 0.006657 0.107252 0.017558 0.111116 0.075083 0.043712 0.112145 0.110461 0.235896 0.000004 0.167400 0.047816 0.081816 0.057845 0.043807 0.031695 0.044477 0.126433 0.064337 0.176853 0.260357 7.796540 1.466762 0.936815 1.594303 0.822875
+
+Note: Branch length is defined as number of nucleotide substitutions per codon (not per neucleotide site).
+
+tree length =   2.14665
+
+((((((12: 0.111116, 6: 0.075083): 0.017558, 3: 0.043712): 0.107252, 8: 0.112145): 0.006657, 10: 0.110461): 0.206242, 1: 0.235896): 0.017692, (((((13: 0.043807, 7: 0.031695): 0.057845, 4: 0.044477): 0.081816, 9: 0.126433): 0.047816, 11: 0.064337): 0.167400, 2: 0.176853): 0.000004, 5: 0.260357);
+
+((((((cerevisiaeYDR418W: 0.111116, paradoxusYDR418W: 0.075083): 0.017558, mikataeYDR418W: 0.043712): 0.107252, kudriavzeviiYDR418W: 0.112145): 0.006657, bayanusYDR418W: 0.110461): 0.206242, castelliiYDR418W: 0.235896): 0.017692, (((((cerevisiaeYEL054C: 0.043807, paradoxusYEL054C: 0.031695): 0.057845, mikataeYEL054C: 0.044477): 0.081816, kudriavzeviiYEL054C: 0.126433): 0.047816, bayanusYEL054C: 0.064337): 0.167400, castelliiYEL054C: 0.176853): 0.000004, kluyveriYDR418W: 0.260357);
+
+Detailed output identifying parameters
+
+kappa (ts/tv) =  7.79654
+
+Frequency parameters:
+   0.29348 (T)   0.18744 (C)   0.31900 (A)   0.20008 (G)
+Equilibrium codon frequencies (evolver-style):
+  0.02710140  0.01730956  0.02945799  0.01847703
+  0.01730956  0.01105555  0.01881470  0.01180121
+  0.02945799  0.01881470  0.00000000  0.00000000
+  0.01847703  0.01180121  0.00000000  0.01259716
+  0.01730956  0.01105555  0.01881470  0.01180121
+  0.01105555  0.00706114  0.01201688  0.00753739
+  0.01881470  0.01201688  0.02045072  0.01282737
+  0.01180121  0.00753739  0.01282737  0.00804576
+  0.02945799  0.01881470  0.03201948  0.02008369
+  0.01881470  0.01201688  0.02045072  0.01282737
+  0.03201948  0.02045072  0.03480371  0.02183005
+  0.02008369  0.01282737  0.02183005  0.01369254
+  0.01847703  0.01180121  0.02008369  0.01259716
+  0.01180121  0.00753739  0.01282737  0.00804576
+  0.02008369  0.01282737  0.02183005  0.01369254
+  0.01259716  0.00804576  0.01369254  0.00858842
+
+omega (dN/dS) =  0.82288
+
+dN & dS for each branch
+
+ branch          t       N       S   dN/dS      dN      dS  N*dN  S*dS
+
+  14..15     0.018   337.5   151.5  0.8229  0.0055  0.0067   1.9   1.0
+  15..16     0.206   337.5   151.5  0.8229  0.0645  0.0783  21.8  11.9
+  16..17     0.007   337.5   151.5  0.8229  0.0021  0.0025   0.7   0.4
+  17..18     0.107   337.5   151.5  0.8229  0.0335  0.0407  11.3   6.2
+  18..19     0.018   337.5   151.5  0.8229  0.0055  0.0067   1.9   1.0
+  19..12     0.111   337.5   151.5  0.8229  0.0347  0.0422  11.7   6.4
+  19..6      0.075   337.5   151.5  0.8229  0.0235  0.0285   7.9   4.3
+  18..3      0.044   337.5   151.5  0.8229  0.0137  0.0166   4.6   2.5
+  17..8      0.112   337.5   151.5  0.8229  0.0350  0.0426  11.8   6.5
+  16..10     0.110   337.5   151.5  0.8229  0.0345  0.0419  11.7   6.4
+  15..1      0.236   337.5   151.5  0.8229  0.0737  0.0896  24.9  13.6
+  14..20     0.000   337.5   151.5  0.8229  0.0000  0.0000   0.0   0.0
+  20..21     0.167   337.5   151.5  0.8229  0.0523  0.0636  17.7   9.6
+  21..22     0.048   337.5   151.5  0.8229  0.0149  0.0182   5.0   2.8
+  22..23     0.082   337.5   151.5  0.8229  0.0256  0.0311   8.6   4.7
+  23..24     0.058   337.5   151.5  0.8229  0.0181  0.0220   6.1   3.3
+  24..13     0.044   337.5   151.5  0.8229  0.0137  0.0166   4.6   2.5
+  24..7      0.032   337.5   151.5  0.8229  0.0099  0.0120   3.3   1.8
+  23..4      0.044   337.5   151.5  0.8229  0.0139  0.0169   4.7   2.6
+  22..9      0.126   337.5   151.5  0.8229  0.0395  0.0480  13.3   7.3
+  21..11     0.064   337.5   151.5  0.8229  0.0201  0.0244   6.8   3.7
+  20..2      0.177   337.5   151.5  0.8229  0.0553  0.0672  18.7  10.2
+  14..5      0.260   337.5   151.5  0.8229  0.0814  0.0989  27.5  15.0
+
+tree length for dN:       0.6708
+tree length for dS:       0.8152
+
+
+
