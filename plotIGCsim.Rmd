@@ -1,0 +1,386 @@
+---
+title: "plotIGCSim"
+author: "Xiang Ji"
+date: "February 18, 2016"
+output: html_document
+---
+
+This R script is used for generating plots, tables, summaries for writing the IGC draft.
+
+```{r}
+rm(list=ls())  # clean up workspace
+# Now load all data
+source("/Users/xji3/GitFolders/IGCSimulation/ReadData.R")
+results.path <- "/Users/xji3/GitFolders/IGCSimulation/"
+library(ggplot2)
+```
+
+__Branch length comparison__
+
+Compare all post-duplication branches of therir IGC estimates, PAML estimates from the true value used in simulation
+
+```{r}
+# IGC Branch
+for (branch.iter in 1:length(IGC.branch.list)){
+  target <- NULL
+  for (IGC.geo in IGC.geo.list){
+    target <- rbind(target, c(true.blen[true.branch.list[branch.iter]], 
+                              mean(get(paste("geo_", toString(IGC.geo), ".0_summary", sep = "" ))[IGC.branch.list[branch.iter], ]),
+                              (sd(get(paste("geo_", toString(IGC.geo), ".0_summary", sep = "" ))[IGC.branch.list[branch.iter], ]) 
+                               / sqrt(length(get(paste("geo_", toString(IGC.geo), ".0_summary", sep = "" ))[IGC.branch.list[branch.iter], ]))), 
+                              (sd(get(paste("geo_", toString(IGC.geo), ".0_summary", sep = "" ))[IGC.branch.list[branch.iter], ]) 
+                               )))
+    }
+  target <- data.frame(target)
+  target <- cbind(IGC.assign.branch.list[branch.iter], "IGC", 
+                  IGC.geo.list, target)
+  colnames(target) <- c( "Branch", "Method", "IGC.geo", "True_blen", "estimated_blen", "se_of_blen", "sd_of_blen")
+  assign(paste(IGC.assign.branch.list[branch.iter], "blen", sep = "."), target)
+  }
+
+# paralog1 Branch
+for (branch.iter in 1:length(IGC.branch.list)){
+  target <- NULL
+  for (IGC.geo in IGC.geo.list){
+    target <- rbind(target, c(true.blen[true.branch.list[branch.iter]], 
+                              mean(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog1.branch.list[branch.iter], ]),
+                              (sd(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog1.branch.list[branch.iter], ]) 
+                               / sqrt(length(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog1.branch.list[branch.iter], ]))), 
+                              (sd(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog1.branch.list[branch.iter], ]) 
+                               )))
+    }
+  target <- data.frame(target)
+  target <- cbind(IGC.assign.branch.list[branch.iter], "Paralog 1", IGC.geo.list, target)
+  colnames(target) <- c("Branch", "Method", "IGC.geo", "True_blen", "estimated_blen", "se_of_blen", "sd_of_blen")
+  assign(paste(IGC.assign.branch.list[branch.iter], "blen", sep = "."), rbind(get(paste(IGC.assign.branch.list[branch.iter], "blen", sep = ".")), target))
+  }
+
+# paralog2 Branch
+for (branch.iter in 1:length(IGC.branch.list)){
+  target <- NULL
+  for (IGC.geo in IGC.geo.list){
+    target <- rbind(target, c(true.blen[true.branch.list[branch.iter]], 
+                              mean(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog2.branch.list[branch.iter], ]),
+                              (sd(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog2.branch.list[branch.iter], ]) 
+                               / sqrt(length(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog2.branch.list[branch.iter], ]))), 
+                              (sd(get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = "" ))[PAML.paralog2.branch.list[branch.iter], ]) 
+                               )))
+    }
+  target <- data.frame(target)
+  target <- cbind(IGC.assign.branch.list[branch.iter], "Paralog 2", IGC.geo.list, target)
+  colnames(target) <- c("Branch", "Method", "IGC.geo", "True_blen", "estimated_blen", "se_of_blen", "sd_of_blen")
+  assign(paste(IGC.assign.branch.list[branch.iter], "blen", sep = "."), rbind(get(paste(IGC.assign.branch.list[branch.iter], "blen", sep = ".")), target))
+  }
+
+for (IGC.geo in IGC.geo.list){
+  target <- NULL
+  for (branch.iter in 1:length(IGC.branch.list)){
+    branch.target <- get(paste(IGC.assign.branch.list[branch.iter], "blen", sep = "."))
+    target <- rbind(target, branch.target[branch.target[, "IGC.geo"] == IGC.geo, ])
+    }
+  target <- data.frame(target)
+  assign(paste("geo_", toString(IGC.geo), ".0_blen_summary", sep = "" ), target)
+  }
+
+```
+
+
+Now plot estimated blen vs. true blen of each branches, change error bar to reflect 95% credit interval
+
+```{r}
+for (IGC.geo in IGC.geo.list){
+  
+  #http://gis.stackexchange.com/questions/120623/inserting-a-zoomed-in-plot-with-a-full-scale-plot-in-the-sp-package-in-r 
+  # settings for full plot
+  fulltheme <- theme(#panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    #panel.background = element_blank() 
+    #axis.text.x=element_blank(), axis.text.y=element_blank(),
+    #axis.ticks=element_blank(),
+    #axis.title.x=element_blank(), axis.title.y=element_blank()
+    )
+  
+  # settings for zoom plot
+  zoomtheme <- theme(legend.position="none", 
+                     #axis.line=element_blank(),axis.text.x=element_blank(),
+                     #axis.text.y=element_blank(),axis.ticks=element_blank(),
+                     axis.title.x=element_blank(),axis.title.y=element_blank(),
+                     panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                     #plot.margin = unit(c(0,0,-0.6,-0.6),"mm"),                   
+                     panel.background = element_rect(color='red', fill="white")
+                     )
+  
+  target <- get(paste("geo_", toString(IGC.geo), ".0_blen_summary", sep = "" ))
+  p.full <- ggplot(target, aes(x = True_blen, y= estimated_blen, colour = Method, group = Method)) +
+    geom_errorbar(aes(ymin = estimated_blen -  qnorm(0.975) * se_of_blen, ymax = estimated_blen + qnorm(0.975) * se_of_blen)) + 
+    #    geom_line() + 
+    geom_point(shape = 21, fill = "white") + 
+    geom_abline(intercept = 0.0, slope = 1.0, lty = 2, colour = "grey") +
+    xlab("True Branch Length") + 
+    ylab("Estimated Branch Length") + 
+    xlim(0.0, 0.25) + #max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) + 
+    ylim(0.0, 0.25) + #max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) +
+    ggtitle(paste("estimated blen v.s. true blen tract length = ", toString(IGC.geo), " NOT respect codon boundary", sep = "")) +
+    fulltheme
+  
+  p.zoom <- ggplot(target, aes(x = True_blen, y= estimated_blen, colour = Method, group = Method)) +
+    geom_errorbar(aes(ymin = estimated_blen - qnorm(0.975) * se_of_blen, ymax = estimated_blen + qnorm(0.975) * se_of_blen)) + 
+    #    geom_line() + 
+    geom_point(shape = 21, fill = "white") + 
+    geom_abline(intercept = 0.0, slope = 1.0, lty = 2, colour = "grey") +
+    coord_cartesian(xlim = c(0.0, 0.05), ylim = c(0.0, 0.05)) +
+    xlab("True Branch Length") + 
+    ylab("Estimated Branch Length") + 
+    zoomtheme
+  g <- ggplotGrob(p.zoom)
+  
+  x.off <- 0.15
+  plot.together <- p.full + annotation_custom(grob = g, xmin = 0.125, xmax = 0.25, 
+                                              ymin = 0.0, 
+                                              ymax = 0.125) 
+  
+  ggsave(paste(results.path, "estimated blen vs true blen geo_", toString(IGC.geo), ".pdf", sep = ""))
+  ggsave(paste(results.path, "estimated blen vs true blen geo_", toString(IGC.geo), ".jpg", sep = ""))
+  
+  }
+
+```
+
+__Tau estimate comparison__
+
+```{r}
+Tau.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target <- get(paste("geo_", toString(IGC.geo), ".0_summary", sep = ""))
+  Tau.summary <- rbind(Tau.summary, c(IGC.geo, mean(target["tau", ]), 
+                                      sd(target["tau", ]) / sqrt(dim(target)[2]), 
+                                      sd(target["tau", ])))
+  }
+colnames(Tau.summary) <- c("IGC.geo", "mean", "se", "sd")
+Tau.summary <- data.frame(Tau.summary)
+ggplot(Tau.summary, aes(x = IGC.geo, y= mean)) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.975) * sd, ymax = mean + qnorm(0.975) * sd)) + 
+  #  geom_line() + 
+  geom_point(shape = 21, fill = "white") + 
+  xlab("Expected tract length") + 
+  ylab("Estimated tau") + 
+  #    xlim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) + 
+  #    ylim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) +
+  geom_hline(yintercept = 1.409408, lty = 2) + 
+  ggtitle("estimated Tau value NOT respect codon boundary")
+ggsave(paste(results.path, "estimated tau NOT respect boundary summary.pdf", sep = ""))
+
+```
+
+__Kappa estimate comparison__
+
+```{r}
+Kappa.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target <- get(paste("geo_", toString(IGC.geo), ".0_summary", sep = ""))
+  Kappa.summary <- rbind(Kappa.summary, c(IGC.geo, mean(target["kappa", ]), sd(target["kappa", ]) / sqrt(dim(target)[2])))
+  }
+colnames(Kappa.summary) <- c("IGC.geo", "mean", "se")
+Kappa.summary <- data.frame(Kappa.summary)
+ggplot(Kappa.summary, aes(x = IGC.geo, y= mean)) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.975) * se, ymax = mean + qnorm(0.975) * se)) + 
+  #  geom_line() + 
+  geom_point(shape = 21, fill = "white") + 
+  xlab("Mean tract length") + 
+  ylab("Estimated Kappa") + 
+  #    xlim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) + 
+  #    ylim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) +
+  geom_hline(yintercept = 8.4043336, lty = 2) + 
+  ggtitle("estimated Kappa value NOT respect codon boundary")
+ggsave(paste(results.path, "estimated kappa NOT respect boundary summary.pdf", sep = ""))
+
+
+```
+
+
+__omega estimate comparison__
+
+```{r}
+omega.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target <- get(paste("geo_", toString(IGC.geo), ".0_summary", sep = ""))
+  omega.summary <- rbind(omega.summary, c(IGC.geo, mean(target["omega", ]), sd(target["omega", ]) / sqrt(dim(target)[2])))
+  }
+colnames(omega.summary) <- c("IGC.geo", "mean", "se")
+omega.summary <- data.frame(omega.summary)
+ggplot(omega.summary, aes(x = IGC.geo, y= mean)) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.975) * se, ymax = mean + qnorm(0.975) * se)) + 
+  #  geom_line() + 
+  geom_point(shape = 21, fill = "white") + 
+  xlab("Mean tract length") + 
+  ylab("Estimated omega") + 
+  #    xlim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) + 
+  #    ylim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) +
+  geom_hline(yintercept = 1.0, lty = 2) + 
+  ggtitle("estimated omega value NOT respect codon boundary")
+ggsave(paste(results.path, "estimated omega NOT respect boundary summary.pdf", sep = ""))
+```
+
+Mar 4th 2016 update
+Now plot tau, kappa, omega in the same plot
+
+```{r}
+tau.kappa.omega.summary <- rbind(cbind(omega.summary, "variable" = "omega"), 
+                                 cbind(Kappa.summary, "variable" = "kappa"),
+                                 cbind(Tau.summary,   "variable" = "tau"))
+tau.kappa.omega.summary <- data.frame(tau.kappa.omega.summary)
+ggplot(tau.kappa.omega.summary, aes(x = IGC.geo, y= mean, colour = variable, group = variable)) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.975) * se, ymax = mean + qnorm(0.975) * se)) + 
+  #  geom_line() + 
+  geom_point(shape = 21, fill = "white") + 
+  xlab("Mean tract length") + 
+  ylab("Estimate") + 
+  ylim(0.0, 10.0) +
+  geom_hline(yintercept = c(1.0, 8.4043336, 1.409408), lty = 2, colour = c("red", "green", "blue")) + 
+  ggtitle("Variable estimated values NOT respect codon boundary")
+ggsave(paste(results.path, "estimated variables NOT respect boundary summary.pdf", sep = ""))
+
+
+```
+
+
+March 11th 2016 update
+
+Add proportion of changes due to IGC plots
+
+```{r}
+percent.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target <- get(paste("percent.IGC.geo.", toString(IGC.geo), ".0", sep = ""))
+  percent.summary <- rbind(percent.summary, c(IGC.geo, mean(target), sd(target)))
+  }
+colnames(percent.summary) <- c("IGC.geo", "mean", "sd")
+percent.summary <- data.frame(percent.summary)
+
+ggplot(percent.summary, aes(x = IGC.geo, y= mean)) +
+  geom_errorbar(aes(ymin = mean - qnorm(0.975) * sd, ymax = mean + qnorm(0.975) * sd)) + 
+  #  geom_line() + 
+  geom_point(shape = 21, fill = "white") + 
+  xlab("Expected tract length") + 
+  ylab("Estimated proportion of changes due to IGC") + 
+  #    xlim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) + 
+  #    ylim(0.0, max(target[, "True_blen"], target[, "estimated_blen"] + target[, "se_of_blen"]) * 1.1) +
+  geom_hline(yintercept = 0.2131, lty = 2) + 
+  ggtitle("estimated proportion of changes due to IGC NOT respect codon boundary")
+ggsave(paste(results.path, "estimated proportion of changes due to IGC NOT respect boundary summary.pdf", sep = ""))
+ggsave(paste(results.path, "estimated proportion of changes due to IGC NOT respect boundary summary.jpg", sep = ""))
+
+```
+
+Now re-visit N0_N1 branch
+
+```{r}
+ p.full <- ggplot(N0.N1.blen, aes(x = IGC.geo, y= estimated_blen, colour = Method, group = Method)) +
+    geom_errorbar(aes(ymin = estimated_blen -  qnorm(0.975) * sd_of_blen, ymax = estimated_blen + qnorm(0.975) * sd_of_blen)) + 
+    #    geom_line() + 
+    geom_point(shape = 21, fill = "white") + 
+    geom_hline(yintercept = 0.01972409, lty = 2) + 
+    xlab("Mean tract length") + 
+    ylab("Estimated Branch Length") + 
+    #xlim(0.0, 0.25) + #max(target[, "True_blen"], target[, "estimated_blen"] + target[, "sd_of_blen"]) * 1.1) + 
+    #ylim(0.0, 0.25) + #max(target[, "True_blen"], target[, "estimated_blen"] + target[, "sd_of_blen"]) * 1.1) +
+    ggtitle(paste("estimated blen vs true blen N0_N1 NOT respect codon boundary", sep = "")) +
+    fulltheme
+ggsave(paste(results.path, "estimated blen vs true blen N0_N1.pdf", sep = ""))
+ggsave(paste(results.path, "estimated blen vs true blen N0_N1.jpg", sep = ""))
+```
+
+Now calculate correlation of N0_N1 branch estimate between 2 different methods
+
+```{r}
+correlation.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target.1 <- get(paste("geo_", toString(IGC.geo), ".0_summary", sep = ""))
+  target.2 <- get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = ""))
+  correlation.summary <- rbind(correlation.summary, c(IGC.geo, cor(target.1["(N0,N1)", ], target.2["N0_N1",]), 
+                                              cor(target.1["(N0,N1)", ], target.2["N0_N6",])))
+  }
+colnames(correlation.summary) <- c("IGC.geo", "correlation with paralog 1", "correlation with paralog 2")
+
+
+```
+
+Now perform t-test of N0_N1 brach from PAML
+
+```{r}
+t.test.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target.1 <- get(paste("geo_", toString(IGC.geo), ".0_summary", sep = ""))
+  target.2 <- get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = ""))
+  t.test.IGC <- t.test(target.1["(N0,N1)", ] - 0.01972409)
+  t.test.paralog.1 <- t.test(target.2["N0_N1",] - 0.01972409)
+  t.test.paralog.2 <- t.test(target.2["N0_N6",] - 0.01972409)
+  t.test.summary <- rbind(t.test.summary, 
+                               c(IGC.geo, t.test.IGC$statistic[[1]], t.test.paralog.1$statistic[[1]], 
+                                 t.test.paralog.2$statistic[[1]], t.test.IGC$p.value, 
+                                 t.test.paralog.1$p.value, t.test.paralog.2$p.value))
+  
+}
+colnames(t.test.summary) <- c("IGC.geo", "t of IGC", "t of paralog 1", "t of paralog 2",
+                              "p-value of IGC", "p-value of paralog 1", "p-value of paralog 2")
+
+```
+
+Now check if the under-estimation of N0_N1 is consistent with the over-estimation of outgroup branch
+
+```{r}
+# if it's consistent then, the estimate of outgroup branch from PAML should be higher 
+# than that in IGC+MG94 model or true value by 1/2*sf
+# similarly, the estimate of N0_N1 (and N0_N6 branch of paralog 2) should be less than
+# that in IGC+MG94 model or true value by 1/2*sf
+# true branch length of N0_kluyveri used in simulation is 0.215682181791
+# true branch length of N0_N1       used in simulation is 0.01972409
+N0.kluyveri.PAML.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target <- get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = ""))
+  N0.kluyveri.PAML.summary <- rbind(N0.kluyveri.PAML.summary, 
+                               c(IGC.geo, mean(target["N0_kluyveriYDR418W", ]) - 0.215682181791, 
+                                 sd(target["N0_kluyveriYDR418W", ])))
+  N0.kluyveri.PAML.summary <- rbind(N0.kluyveri.PAML.summary, 
+                               c(IGC.geo, -(mean(target["N0_N1", ]) - 0.01972409), 
+                                 sd(target["N0_N1", ])))
+  N0.kluyveri.PAML.summary <- data.frame(N0.kluyveri.PAML.summary)
+  N0.kluyveri.PAML.summary <- rbind(N0.kluyveri.PAML.summary, 
+                               c(IGC.geo,-(mean(target["N0_N6", ]) - 0.01972409), 
+                                 sd(target["N0_N6", ])))
+  N0.kluyveri.PAML.summary <- data.frame(N0.kluyveri.PAML.summary)
+}
+N0.kluyveri.PAML.summary <- data.frame(N0.kluyveri.PAML.summary)
+N0.kluyveri.PAML.summary <- cbind(N0.kluyveri.PAML.summary, matrix(c("outgroup", "N0_N1", "N0_N6"), length(IGC.geo.list) * 3, 1))
+colnames(N0.kluyveri.PAML.summary) <- c("IGC.geo", "over_estimation", "sd_over_estimation", "branch")
+N0.kluyveri.PAML.summary <- data.frame(N0.kluyveri.PAML.summary)
+
+
+p.full <- ggplot(N0.kluyveri.PAML.summary, aes(x = IGC.geo, y= over_estimation, colour = branch, group = branch)) +
+    geom_errorbar(aes(ymin = over_estimation -  qnorm(0.975) * sd_over_estimation, ymax = over_estimation + qnorm(0.975) * sd_over_estimation)) + 
+    #    geom_line() + 
+    geom_point(shape = 21, fill = "white") + 
+    xlab("Mean tract length") + 
+    ylab("Over / - under branch length estimation") + 
+    #xlim(0.0, 0.25) + #max(target[, "True_blen"], target[, "estimated_blen"] + target[, "sd_of_blen"]) * 1.1) + 
+    #ylim(0.0, 0.25) + #max(target[, "True_blen"], target[, "estimated_blen"] + target[, "sd_of_blen"]) * 1.1) +
+    ggtitle(paste("Over / -under estimation from PAML", sep = "")) +
+    fulltheme
+ggsave(paste(results.path, "OverEstimationPAML.pdf", sep = ""))
+ggsave(paste(results.path, "OverEstimationPAML.jpg", sep = ""))
+
+
+t.test.overestimation.summary <- NULL
+for (IGC.geo in IGC.geo.list){
+  target <- get(paste("geo_", toString(IGC.geo), ".0_PAML_maxlnL_summary", sep = ""))
+  t.test.paralog.1 <- t.test(target["N0_kluyveriYDR418W", ] - 0.215682181791, -(target["N0_N1", ] - 0.01972409), paired = TRUE)
+  t.test.paralog.2 <- t.test(target["N0_kluyveriYDR418W", ] - 0.215682181791, -(target["N0_N6", ] - 0.01972409), paired = TRUE)
+  t.test.overestimation.summary <- rbind(t.test.overestimation.summary, 
+                               c(IGC.geo, t.test.paralog.1$statistic[[1]], 
+                                 t.test.paralog.2$statistic[[1]],
+                                 t.test.paralog.1$p.value, t.test.paralog.2$p.value))
+  
+}
+colnames(t.test.overestimation.summary) <- c("IGC.geo",  "t of outgroup vs. N0_N1", "t of outgroup vs. N0_N6",
+                              "p-value of outgroup vs. N0_N1", "p-value of outgroup vs. N0_N6")
+
+```

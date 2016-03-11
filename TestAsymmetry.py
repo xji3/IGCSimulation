@@ -32,11 +32,11 @@ if __name__ == '__main__':
     nametree_list = ['/Users/xji3/GitFolders/IGCSimulation/YDR418W_YEL054C_local_nametree1.newick',
                  '/Users/xji3/GitFolders/IGCSimulation/YDR418W_YEL054C_local_nametree2.newick',
                  '/Users/xji3/GitFolders/IGCSimulation/YDR418W_YEL054C_local_nametree3.newick']
-    IGC_geo_list = [3.0, 10.0, 50.0]
-    #IGC_geo_list = [100.0, 200.0, 300.0]
-    #IGC_geo_list = [400.0, 500.0]
+    IGC_geo_list = [3.0, 10.0, 50.0, 100.0, 500.0]
+    IGC_geo_list = [200.0, 300.0, 400.0]
+    IGC_geo_list = [3.0, 10.0, 50.0, 100.0, 200.0, 300.0, 400.0, 500.0]
+    #IGC_geo_list = [3.0]
 
-    
     #local_tree_num = 1
     for local_tree_num in range(1, 4):
         tree_loc = tree_list[local_tree_num - 1]
@@ -52,8 +52,8 @@ if __name__ == '__main__':
                 seq_loc = wk_dir + 'YDR418W_YEL054C_MG94_geo_' + str(IGC_geo) + '_Sim_' + str(sim_num) + '.fasta'
                 ctl_loc = wk_dir + 'geo_' + str(IGC_geo) + '_Sim_' + str(sim_num) + '_localTree_' + str(local_tree_num) + '_codeml.ctl'
                 out_file = wk_dir + 'unrooted_MG94_geo_' + str(IGC_geo) + '_Sim_' + str(sim_num) + '_localTree_' + str(local_tree_num) + '_codeml_output.txt'
-                prepare_ctl(tree_loc, seq_loc, out_file, ctl_loc)
-                run_paml(wk_dir, ctl_loc)#, "/Users/xji3/Software/paml4.8/bin/codeml")
+                #prepare_ctl(tree_loc, seq_loc, out_file, ctl_loc)
+                #run_paml(wk_dir, ctl_loc)#, "/Users/xji3/Software/paml4.8/bin/codeml")
                 
                 if os.path.isfile(out_file):
                     codeml_result = codeml.read(out_file)
